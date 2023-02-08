@@ -1,0 +1,15 @@
+sqrt2 is 1.4142135623731, sqrt2*sqrt2 is 2
+2^(1/5) is 1.14869835499704, (2^(1/5))^5 is 2
+e^pi is 23.1406926327793 and (e^pi)^(1/pi) is 2.71828182845905
+pi^e is 22.459157718361 and (pi^e)^(1/e) is 3.14159265358979
+gamma(1) is 0.999999989064903
+gamma(2) is 0.999999989064903
+gamma(3) is 1.99999997812981
+gamma(10) is 362879.997652016
+gamma(7) is 719.99999212673
+lngamma(7) is 6.579251201075
+gamma(14) is 6227020792.47579
+lngamma(14) is 22.5521638519151
+gamma(-0.1) is -10.686287131794
+Cannot do lngamma for negative numbers
+lngamma(-0.1) is -1
