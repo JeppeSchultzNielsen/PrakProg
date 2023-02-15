@@ -1,0 +1,16 @@
+u=2 3 4 
+v=1 2 3 
+u+v=3 5 7 
+2*u4 6 8 
+u*24 6 8 
+w2=4 9 14 
+-u=-2 -3 -4 
+u%v is 20
+u.dot(v) with method is 20
+u.norm() is 5.3851648071345
+u.cross(v) = 1 0 1 
+vec.cross(u,v) = 1 0 1 
+u and v are equal: False
+w3 = 2 3 4 
+u and w3 are equal: True
+Test of ToString of w3: 2 3 4

@@ -1,0 +1,14 @@
+my max int = 2147483647
+int.MaxValue = 2147483647
+my min int = -2147483648
+int.MinValue = -2147483648
+The machine epsilon for doubles is 2.22044604925031E-16
+The machine epsilon for floats is 1.192093E-07
+Machine epsilon is 2.220446e-016, epsilon/2 is 1.11022302462516E-16
+sumA-1 = 0.000000e+000 should be 1.110223e-010
+sumB-1 = 1.110223e-010 should be 1.110223e-010
+The reason for this fact is that epsilon/2 was found in exercise 2 to be exactly the value which results in 1 when added with 1. So adding it to 1 many times (as done in sumA) results in 1+epsilon/2 many times, and each time it is 1. But if we add many epsilon/2 it becomes a 'large' number, which does not result in 1 when added to 1.
+d1=0.1+0.1+...+0.1 is 7.999999999999999e-001
+d2=8*0.1 is 8.000000000000000e-001
+d1==d2 evaluates as False
+approx(d1,d2) evaluates as True with relative and absolute precision 1e-9
