@@ -1,0 +1,7 @@
+Sqrt(-1) should be i, is 6.12e-17+1i
+Sqrt(i) should be (1+i)/sqrt(2), is 0.707+0.707i
+e^i should be cos(1) + i sin(1), is 0.54+0.841i
+e^(pi i) should be -1, is -1+1.22e-16i
+i^i should be e^(-pi/2)=0.208, is 0.208+0i
+ln(i) should be i pi / 2, is 0+1.57i
+sin(i pi) should be i*sinh(pi) = 11.54i, is 0+11.5i
