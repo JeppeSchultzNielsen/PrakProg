@@ -1,0 +1,11 @@
+nterms=1000000000 nthreads=4
+master thread: waiting for other threads...
+thread1 a = 1 b = 250000001
+thread3 a = 500000001 b = 750000001
+thread4 a = 750000001 b = 1000000001
+thread2 a = 250000001 b = 500000001
+thread4 partialsum = 0.287682072285131
+thread3 partialsum = 0.405465107774879
+thread2 partialsum = 0.693147179559917
+thread1 partialsum = 19.9141871427291
+Totalsum: 21.300481502349

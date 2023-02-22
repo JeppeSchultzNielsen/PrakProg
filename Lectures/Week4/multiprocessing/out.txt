@@ -1,0 +1,44 @@
+nterms=500000000 nthreads=1
+master thread: waiting for other threads...
+thread1 a = 1 b = 500000001
+thread1 partialsum = 20.6073343222888
+Totalsum: 20.6073343222888
+real 1.58
+user 1.56
+sys 0.01
+nterms=500000000 nthreads=2
+master thread: waiting for other threads...
+thread1 a = 1 b = 250000001
+thread2 a = 250000001 b = 500000001
+thread2 partialsum = 0.693147179559917
+thread1 partialsum = 19.9141871427291
+Totalsum: 20.607334322289
+real 0.94
+user 1.73
+sys 0.03
+nterms=500000000 nthreads=3
+master thread: waiting for other threads...
+thread3 a = 333333334 b = 500000001
+thread1 a = 1 b = 166666667
+thread2 a = 166666667 b = 333333334
+thread3 partialsum = 0.40546510860821
+thread2 partialsum = 0.693147182060259
+thread1 partialsum = 19.5087220316203
+Totalsum: 20.6073343222888
+real 2.68
+user 5.98
+sys 0.01
+nterms=500000000 nthreads=4
+master thread: waiting for other threads...
+thread4 a = 375000001 b = 500000001
+thread3 a = 250000001 b = 375000001
+thread1 a = 1 b = 125000001
+thread2 a = 125000001 b = 250000001
+thread2 partialsum = 0.693147178559909
+thread1 partialsum = 19.2210399641691
+thread4 partialsum = 0.287682072118434
+thread3 partialsum = 0.405465107441525
+Totalsum: 20.6073343222889
+real 2.68
+user 9.49
+sys 0.01
