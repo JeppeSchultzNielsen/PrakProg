@@ -23,7 +23,7 @@ public static class main{
 
         WriteLine($"nterms = {nterms}, sum = {sum}");
 
-        WriteLine("Parallel.For gives wrong results (and is slower) because the way it is currently written using a global variable which all of the threads try to access which is a race condition. It is also implemented using a delegate, which is slower than just doing the arithmetic in the ordinary for-loops because of the function call.");
+        WriteLine("Parallel.For gives wrong results (and is slower) because in the way it is currently written using a global variable which all of the threads try to access which is a race condition. It is also implemented using a delegate, which is slower than just doing the arithmetic in the ordinary for-loops because of the function call.");
         return 0;
 	}
 }

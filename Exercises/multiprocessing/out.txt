@@ -3,8 +3,8 @@ master thread: waiting for other threads...
 thread1 a = 1 b = 500000001
 thread1 partialsum = 20.6073343222888
 Totalsum: 20.6073343222888
-real 2.50
-user 2.47
+real 2.44
+user 2.41
 sys 0.02
 nterms=500000000 nthreads=2
 master thread: waiting for other threads...
@@ -13,38 +13,38 @@ thread2 a = 250000001 b = 500000001
 thread1 partialsum = 19.9141871427291
 thread2 partialsum = 0.693147179559917
 Totalsum: 20.607334322289
-real 5.99
-user 11.76
-sys 0.03
+real 9.88
+user 19.45
+sys 0.00
 nterms=500000000 nthreads=3
 master thread: waiting for other threads...
-thread3 a = 333333333 b = 499999999
-thread2 a = 166666667 b = 333333333
 thread1 a = 1 b = 166666667
+thread2 a = 166666667 b = 333333333
+thread3 a = 333333333 b = 499999999
 thread3 partialsum = 0.40546510760821
 thread2 partialsum = 0.693147179060259
 thread1 partialsum = 19.5087220316203
 Totalsum: 20.6073343182888
-real 4.87
-user 10.14
+real 2.83
+user 6.13
 sys 0.02
 nterms=500000000 nthreads=4
 master thread: waiting for other threads...
+thread1 a = 1 b = 125000001
+thread2 a = 125000001 b = 250000001
 thread4 a = 375000001 b = 500000001
 thread3 a = 250000001 b = 375000001
-thread2 a = 125000001 b = 250000001
-thread1 a = 1 b = 125000001
 thread4 partialsum = 0.287682072118434
 thread3 partialsum = 0.405465107441525
 thread1 partialsum = 19.2210399641691
 thread2 partialsum = 0.693147178559909
 Totalsum: 20.6073343222889
-real 3.60
-user 8.25
+real 3.32
+user 7.89
 sys 0.02
 Calculating with Parallel.For nterms=500000000 nthreads=1
-nterms = 500000000, sum = 14.312483297889
-Parallel.For gives wrong results (and is slower) because the way it is currently written using a global variable which all of the threads try to access which is a race condition. It is also implemented using a delegate, which is slower than just doing the arithmetic in the ordinary for-loops because of the function call.
-real 5.18
-user 40.12
-sys 0.03
+nterms = 500000000, sum = 14.5589960734978
+Parallel.For gives wrong results (and is slower) because in the way it is currently written using a global variable which all of the threads try to access which is a race condition. It is also implemented using a delegate, which is slower than just doing the arithmetic in the ordinary for-loops because of the function call.
+real 5.38
+user 29.87
+sys 0.10
