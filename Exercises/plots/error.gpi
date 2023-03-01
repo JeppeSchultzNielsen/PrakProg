@@ -1,0 +1,13 @@
+set terminal svg
+set output "Error.svg"
+set key bottom right
+set xlabel "x"
+set ylabel "y"
+set xzeroaxis
+set yzeroaxis
+set tics out
+set title "Error function"
+set samples 1200
+plot [-3.5:3.5] \
+"error.data" using ($1):($2) with lines lt 2 title "Error function"\
+,"errorTabulated.data" using ($1):($2) with points pt 4 title "Tabulated data"\

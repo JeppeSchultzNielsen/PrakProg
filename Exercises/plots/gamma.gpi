@@ -1,0 +1,14 @@
+set terminal svg
+set output "Gamma.svg"
+set key bottom right
+set xlabel "x"
+set ylabel "y"
+set xzeroaxis
+set yzeroaxis
+set tics out
+set title "Gamma function"
+set samples 1200
+plot [-5:5][-5:5] \
+"gamma.data" using ($1):($2) with lines lt 2 title "Gamma"\
+,"factorials.data" using ($1+1):($2) with points pt 4 title "Experiment"\
+,gamma(x) with lines lt 1 title "Built in gamma"

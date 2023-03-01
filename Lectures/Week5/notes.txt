@@ -1,0 +1,25 @@
+you can make a bundle of source code and dll's using mkbundle.
+e.g. 
+mkbundle -o main --simlpe main.exe sfuns.dll
+which can be run by
+./main
+Homework will be three steps:
+a - 6 points
+b - 3 points
+c - 1 point 
+Linear equations: interesting because 1st term is always linear.
+Simplest linear equation: ax=b => x  = 1/a * b. Typically we have system of equations:
+A_11 * x_ 1 + A_12 * x_2 = b_1
+A_21 * x_1 + A_22 * x_2 = b_2
+Or in matrix notation just A * x = b (A is matrix, x and b vectors).
+If A is singular (det(A) = 0) there is a solution. Ofcourse we have finite precision, so this is a bit tricky.
+Dimitri has already made matrix and vector classes, so we don't need to make these. 
+Solve system by triangulization, transform A to T x = b where T can be either upper or lower triangular. Then can be solved easily by back substitution,
+last element is known, A_nn * x_n = b_n, the next equation is then A_n-1,n-1 * x_n-1 + A_n-1,n * x_n = b_n-1 but this only has one unknown because we already solved
+for x_n.
+How to make it triangular? LU decomposition. 
+Doolittle algorithm: represent A as L*U (lower and upper), usually choose L as the lower triangle of A with 1's on diagonal and U as rest.
+We have 
+A x = b
+L U x = b
+L y = b , y = (U*x)
