@@ -78,4 +78,7 @@ Then V^T S^-1 U^T is pseudo inverse to A, means their product produce a smaller 
 
 How to do eigenvalue decomposition?
 Jacobi eigenvalue algorithm.
-
+Go to new basis A -> Q^T A Q
+A v = l v 
+Q^T A Q Q ^T v = l Q^T v 
+A' v' = l v' 

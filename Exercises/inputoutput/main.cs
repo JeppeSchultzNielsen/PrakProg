@@ -7,23 +7,6 @@ public class main{
     public static int Main(string[] args){
         string infile=null,outfile=null;
 
-        foreach(var arg in args){
-	        var words = arg.Split(':');
-	        if(words[0]=="-numbers"){
-		        var numbers=words[1].Split(',');
-                WriteLine("Task 1: "); 
-		        foreach(var number in numbers){
-			        double x = double.Parse(number);
-			        WriteLine($"{x} {Sin(x)} {Cos(x)}");
-			    }
-		    }
-	        if(words[0]=="-input"){
-                infile=words[1];
-                }
-	        if(words[0]=="-output"){
-                outfile=words[1];
-            }
-        }
 
         WriteLine("Task 2:");
         char[] split_delimiters = {' ','\t','\n'};

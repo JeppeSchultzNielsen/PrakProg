@@ -1,0 +1,6 @@
+A = LU
+A = QR
+A = USV^T
+SVD is slower, but more useful (iterative process) 
+If A^T = A, A = V D V^T
+

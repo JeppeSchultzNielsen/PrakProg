@@ -30,10 +30,18 @@ public static class qr{
         return b; 
     }
 
+    public static double det(matrix R){
+        double sum = 0; 
+        for(int i = 0; i < R.size1; i++){
+            sum += R[i,i];
+        }
+        return sum; 
+    }
+
     public static matrix QRGSinvert(matrix Q, matrix R){
-        matrix inverted = new matrix(Q.size1,Q.size2);
+        matrix inverted = new matrix(Q.size2,Q.size1);
         //for each column in B there is a system of equations to solve, with the B-column unknown.
-        for(int i = 0; i < Q.size1; i++){
+        for(int i = 0; i < Q.size2; i++){
             //for this i, the vector is 0, 0 ... i 0's ... 1 , 0, 0...
             vector solVec = new vector(Q.size1);
             solVec[i] = 1; 

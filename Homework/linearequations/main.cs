@@ -20,6 +20,10 @@ public static class main{
 		WriteLine("Q*R");
 		matrix C = A*R;
 		C.print();
+		var inv2 = qr.QRGSinvert(A,R);
+		inv2.print();
+		matrix prod = A*R*inv2;
+		prod.print();
 
 		var rnd = new System.Random(1); /* or any other seed */
 
