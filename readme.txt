@@ -2,6 +2,18 @@ Done exercises:
 complex, epsilon, genericlist, hello, inputoutput, math, multiprocessing, plots, vector
 
 Done homeworks: 
-linearequations a and b.
-eigenvaluedecomposition a and b. 
-least-squares a, b and c. 
+ ======================================
+| #  | homework      | A | B | C | Σ   |
+ ======================================
+| 1  | LinEq         | 6 | 3 | - |  9  |
+---------------------------------------
+| 2  | EVD           | 6 | 3 | - |  9  |
+---------------------------------------
+| 3  | LeastSquares  | 6 | 3 | 1 | 10  |
+---------------------------------------
+| 3  | interpolation | 6 | 3 | - |  9  |
+---------------------------------------
+|              ...                     |
+ ======================================
+|                    total points: 37  |
+ ======================================

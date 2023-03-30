@@ -4,5 +4,8 @@ out.txt : main.exe Makefile
 main.exe : main.cs
 	mcs -target:exe -out:$@ $(filter %.cs,$^) $(addprefix -reference:,$(filter %.dll,$^))
 
+fitter.dll : fitter.cs matrix.dll qr.dll
+	mcs -target:library -out:$@ $(filter %.cs,$^) $(addprefix -reference:,$(filter %.dll,$^))
+
 clean : 
 	rm -f main.exe out.txt

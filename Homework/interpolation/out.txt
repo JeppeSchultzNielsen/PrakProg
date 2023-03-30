@@ -1,0 +1,11 @@
+Testing q-spline with different functions...
+For y=1
+bs_i:	0	0	0	0
+cs_i:	0	0	0	0
+For y=x
+bs_i:	1	1	1	1
+cs_i:	0	0	0	0
+For y=x^2
+bs_i:	2	4	6	8
+cs_i:	1	1	1	1
+This is what would be expected in a manual calculation.

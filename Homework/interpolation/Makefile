@@ -1,0 +1,16 @@
+out.txt Linterp.svg Qinterp.svg: main.exe Makefile linterp.gpi qinterp.gpi
+	mono main.exe > out.txt
+	gnuplot linterp.gpi
+	gnuplot qinterp.gpi
+
+main.exe : main.cs linearInterpolator.dll qspline.dll
+	mcs -target:exe -out:$@ $(filter %.cs,$^) $(addprefix -reference:,$(filter %.dll,$^))
+
+linearInterpolator.dll : linearInterpolator.cs
+	mcs -target:library -out:$@ $(filter %.cs,$^) $(addprefix -reference:,$(filter %.dll,$^))
+
+qspline.dll : qspline.cs
+	mcs -target:library -out:$@ $(filter %.cs,$^) $(addprefix -reference:,$(filter %.dll,$^))
+
+clean : 
+	rm -f main.exe out.txt linearInterpolator.dll txts/* Linterp.svg Qinterp.svg qspline.dll
