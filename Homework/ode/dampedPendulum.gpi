@@ -1,0 +1,10 @@
+set terminal svg
+set output "DampedPendulum.svg"
+set key top right
+set xlabel "t"
+set ylabel "amplitude"
+set tics out
+plot "txts/dampedpend.txt" using ($1):($2) with lines lt rgb "black" title "Theta(t)"\
+,"txts/dampedpend.txt" using ($1):($3) with lines lt rgb "blue" title "Omega(t)"\
+,"txts/dampedpendEndpoints.txt" using ($1):($2) with points lt rgb "black" title "Theta(t), only endpoints calculated"\
+,"txts/dampedpendEndpoints.txt" using ($1):($3) with points lt rgb "blue" title "Omega(t), only endpoints calculated"\
