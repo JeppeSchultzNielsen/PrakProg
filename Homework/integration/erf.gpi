@@ -1,0 +1,10 @@
+set terminal svg
+set output "Erf.svg"
+set key bottom right
+set xlabel "x"
+set ylabel "Erf(x)"
+set tics out
+set title "Errorfunction"
+plot "txts/calculatedErf.txt" using ($1):($2) with lines lt rgb "black" title "Calculated using integrator"\
+,"txts/errorTabulated.txt" using 1:2 with points title "Tabulated points"\
+,"txts/calculatedErf.txt" using ($1):($3) with lines lt rgb "red" title "Calculated using approximation"\
