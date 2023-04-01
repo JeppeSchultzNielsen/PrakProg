@@ -52,5 +52,9 @@ public static class main{
 			toWrite += $"{x}\t{y1}\t{y2}\n";
 		}
 		File.WriteAllText("txts/dampedpendEndpoints.txt", toWrite);
+
+		//test
+		File.WriteAllText("txts/dampedpendEndpoints.txt", toWrite);
+		werwerwerwerwerew
 	}
 }
