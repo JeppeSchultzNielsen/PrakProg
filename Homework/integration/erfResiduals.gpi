@@ -1,0 +1,9 @@
+set terminal svg
+set output "ErfResiduals.svg"
+set key bottom right
+set xlabel "x"
+set ylabel "Absolute difference with tabulated value"
+set tics out
+set title "Errorfunction"
+plot "txts/erfResiduals.txt" using ($1):($2) with points title "Calculated using integrator"\
+,"txts/erfResiduals.txt" using ($1):($3) with points title "Calculated using approximation"\

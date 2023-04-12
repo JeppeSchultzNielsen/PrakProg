@@ -38,14 +38,24 @@ public static class odesolver{
                 if(x>=b) return (xlist,ylist); /* job done */
                 if(x+h>b) h=b-x;               /* last step should end at b */
                 var (yh,erv) = rkstep12(f,x,y,h);
-                double tol = Max(acc,yh.norm()*eps) * Sqrt(h/(b-a));
-                double err = erv.norm();
-                if(err<=tol){ // accept step
+                vector tol = new vector(yh.size);
+                for(int i=0;i<yh.size;i++){
+                    tol[i]=Max(acc,Abs(yh[i])*eps)*Sqrt(h/(b-a));
+                }
+                bool ok=true;
+                for(int i=0;i<yh.size;i++){
+                    if(! (erv[i]<tol[i])) ok=false;
+                }
+                if(ok){ // accept step
                     x+=h; y=yh;
                     xlist.Add(x);
                     ylist.Add(y);
                 }
-            h *= Min( Pow(tol/err,0.25)*0.95 , 2); // readjust stepsize
+                double factor = tol[0]/Abs(erv[0]);
+                for(int i=1;i<y.size;i++){
+                    factor=Min(factor,tol[i]/Abs(erv[i]));
+                }
+                h *= Min( Pow(factor,0.25)*0.95 ,2); // readjust stepsize
             }while(true);
         }
         else{
@@ -59,12 +69,22 @@ public static class odesolver{
                 }
                 if(x+h>b) h=b-x;               /* last step should end at b */
                 var (yh,erv) = rkstep12(f,x,y,h);
-                double tol = Max(acc,yh.norm()*eps) * Sqrt(h/(b-a));
-                double err = erv.norm();
-                if(err<=tol){ // accept step
+                vector tol = new vector(yh.size);
+                for(int i=0;i<yh.size;i++){
+                    tol[i]=Max(acc,Abs(yh[i])*eps)*Sqrt(h/(b-a));
+                }
+                bool ok=true;
+                for(int i=0;i<yh.size;i++){
+                    if(! (erv[i]<tol[i])) ok=false;
+                }
+                if(ok){ // accept step
                     x+=h; y=yh;
                 }
-            h *= Min( Pow(tol/err,0.25)*0.95 , 2); // readjust stepsize
+                double factor = tol[0]/Abs(erv[0]);
+                for(int i=1;i<y.size;i++){
+                    factor=Min(factor,tol[i]/Abs(erv[i]));
+                }
+                h *= Min( Pow(factor,0.25)*0.95 ,2); // readjust stepsize
             }while(true);
         }
     }//driver
