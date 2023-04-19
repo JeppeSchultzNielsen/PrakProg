@@ -1,0 +1,8 @@
+set terminal svg
+set output "Rminconvergence.svg"
+set key top right
+set xlabel "rmin [Bohr radii]"
+set ylabel "Abs(E_{numeric} - E_{analytic})/E_{analytic}"
+set tics out
+set title "Convergence as function of rmin"
+plot "txts/rminconvergence.txt" using ($1):($2) with lines lt rgb "black" title "rmin convergence"\

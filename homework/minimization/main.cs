@@ -10,6 +10,6 @@ public static class main{
 	}
 
 	public static void Main(){
-		minimizer.qnewton(poly2,vector(1),1e-7);
+		minimizer.qnewton(poly2,new vector(7),1e-7);
 	}
 }

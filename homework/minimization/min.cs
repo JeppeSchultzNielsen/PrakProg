@@ -4,18 +4,19 @@ using static System.Console;
 using static System.Math; 
 using System.IO;
 
-class minimizer{
+public static class minimizer{
     public static vector qnewton(
         Func<vector,double> f, /* objective function */
         vector start, /* starting point */
         double acc /* accuracy goal, on exit |gradient| should be < acc */
     ){
-        int dim = vector.size;
+        int dim = start.size;
         matrix B = new matrix(dim,dim);
         for(int i = 0; i < dim; i++){
             B[i,i] = 1;
         }
-        WriteLine(B.print());
+        
+        return new vector(7);
     }
 /*
     set the inverse Hessian matrix to unity, B = 1
