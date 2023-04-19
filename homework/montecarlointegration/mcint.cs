@@ -22,13 +22,13 @@ public static class mcint{
 	    var x=new vector(dim);
 
         for(int i=0;i<N;i++){
+            for(int k=0;k<dim;k++)x[k]=a[k]+rnd.NextDouble()*(b[k]-a[k]);
             if(!(diagString==null)){
                 using (StreamWriter sw = File.AppendText(diagString))
                     {
                         sw.WriteLine($"{x[0]}\t{x[1]}");
                     }	
             }
-            for(int k=0;k<dim;k++)x[k]=a[k]+rnd.NextDouble()*(b[k]-a[k]);
             double fx=f(x); sum+=fx; sum2+=fx*fx;
         }
         
@@ -132,7 +132,7 @@ public static class mcint{
             rightmean[i] = rightf[i]/rightn[i];
             leftvar[i] = Sqrt(leftf2[i]/leftn[i] - leftmean[i]*leftmean[i])*V/2/Sqrt(leftn[i]);
             rightvar[i] = Sqrt(rightf2[i]/rightn[i] - rightmean[i]*rightmean[i])*V/2/Sqrt(rightn[i]);
-            double dvar = Abs(rightmean[i] - leftmean[i]);
+            double dvar = Abs(rightvar[i] - leftvar[i]);
             if(dvar > maxvar){
                 maxvar = dvar;
                 dimmax = i;
