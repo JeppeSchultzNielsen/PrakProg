@@ -1,5 +1,6 @@
-out.txt : main.exe Makefile
-	mono main.exe > out.txt
+out.txt Higgs.svg: main.exe Makefile higgs.gpi
+	mono main.exe < higgs.data 1> out.txt
+	gnuplot higgs.gpi
 
 main.exe : main.cs matrix.dll min.dll
 	mcs -target:exe -out:$@ $(filter %.cs,$^) $(addprefix -reference:,$(filter %.dll,$^))

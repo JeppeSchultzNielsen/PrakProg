@@ -1,0 +1,10 @@
+set terminal svg
+set output "Higgs.svg"
+set key top right
+set xlabel "E [GeV]"
+set ylabel "Signal"
+set tics out
+set title "Breit-Wigner fit to Higgs signal"
+plot "fittedData.dat" using ($1):($2) with lines lt rgb "black" title "Breit-Wigner fit"\
+,"higgs.data" using 1:2:3 with yerrorbars title "Signal"\
+
