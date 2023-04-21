@@ -127,7 +127,7 @@ public static class main{
 		a[1] = 0;
 		string path = "test.txt";
 		using (StreamWriter sw = File.CreateText(path)){}
-		(res, err) = mcint.strataint(circle, a, b, 100000,1000,path);
+		(res, err) = mcint.strataint(circle, a, b, 10000,200,path);
 		b[0] = 1;
 		b[1] = 1;
 		a[0] = 0;
