@@ -1,0 +1,8 @@
+Part A
+Making training points..
+Making interpolation with 7 neurons...
+Making interpolation with 20 neurons...
+Interpolation can be seen in Interpolation.svg
+
+Part B
+Figures have been made. Both with Cos(5x-1)*exp(-x^2) and sin(2x).
