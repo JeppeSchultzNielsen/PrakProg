@@ -1,3 +1,11 @@
+----------
+Part a)
+Making linear spline of sin(x)...
+Plots of the results can be seen on the figure Linterp.svg
+----------
+Part b)
+Making quadratic spline of sin(x)...
+Plots of the results can be seen on the figure Qinterp.svg
 Testing q-spline with different functions...
 For y=1
 bs_i:	0	0	0	0
@@ -9,3 +17,24 @@ For y=x^2
 bs_i:	2	4	6	8
 cs_i:	1	1	1	1
 This is what would be expected in a manual calculation.
+----------
+Part c)
+Testing solution of tridiagonal matrix A: 
+
+    -0.503     -0.779          0          0          0          0          0 
+    -0.066      0.543      0.315          0          0          0          0 
+         0     -0.134     -0.292      0.888          0          0          0 
+         0          0     -0.797      0.285     -0.943          0          0 
+         0          0          0     -0.504      -0.36       0.98          0 
+         0          0          0          0      0.364       0.31     -0.435 
+         0          0          0          0          0      0.231      0.409 
+With vector d: 
+     0.404        0.9     -0.813     -0.678     -0.236      0.596     -0.661 
+Giving solution x: 
+     -2.72       1.24      0.149      -0.68      0.388     -0.448      -1.37 
+We have A*x = 
+     0.404        0.9     -0.813     -0.678     -0.236      0.596     -0.661 
+This is equal to d, so we have correct solution.
+Making cubic spline of sin(x)...
+Quadratic spline data can be seen on Cinterp.svg
+It overlaps completely with GNUplot's cubic spline.
