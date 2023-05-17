@@ -1,8 +1,9 @@
 Part A
 Making training points..
 Making interpolation with 7 neurons...
-Making interpolation with 20 neurons...
 Interpolation can be seen in Interpolation.svg
 
 Part B
 Figures have been made. Both with Cos(5x-1)*exp(-x^2) and sin(2x).
+Calculating integral can be done in a very stable way. 1st derivative looks somewhat convincing, 2nd derivative is very bad.
+This is fair because we are really limited by few gaussian wavelets, which may have extreme second derivatives.

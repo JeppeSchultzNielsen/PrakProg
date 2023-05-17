@@ -2,11 +2,11 @@ set terminal svg
 set output "SinInterpolation.svg"
 set key top right
 set xlabel "x"
-set ylabel "sin(2x)"
+set ylabel "y"
 set tics out
 set title "Artificial neural network interpolation"
-plot "txts/sinTraining.txt" using ($1):($2) with points title "Training points"\
-,"txts/sinDerivatives.txt" using 1:5 with line title "Interpolation with 20 neurons"\
-,"txts/sinDerivatives.txt" using 1:2 with line title "Antiderivative"\
+plot "txts/sinTraining.txt" using ($1):($2) with points title "Training points (sin(x))"\
+,"txts/sinDerivatives.txt" using 1:5 with line title "Interpolation with 10 neurons"\
+,"txts/sinDerivatives.txt" using 1:2 with line title "Integral from 0 to x"\
 ,"txts/sinDerivatives.txt" using 1:3 with line title "1st derivative"\
 ,"txts/sinDerivatives.txt" using 1:4 with line title "2nd derivative"\

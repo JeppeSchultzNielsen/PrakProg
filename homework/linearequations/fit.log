@@ -1,0 +1,60 @@
+
+
+*******************************************************************************
+Wed May 17 13:00:55 2023
+
+
+FIT:    data read from 'times.data' using 1:2
+        format = x:z
+        #datapoints = 7
+        residuals are weighted equally (unit weight)
+
+function used for fitting: f(x)
+	f(x) = a*x**3
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   a            
+   0 6.6101958927e+04   0.00e+00  9.85e+01    1.000000e-06
+   4 2.6280855383e-02  -1.63e-06  9.85e-03    1.337648e-08
+
+After 4 iterations the fit converged.
+final sum of squares of residuals : 0.0262809
+rel. change during last iteration : -1.63192e-11
+
+degrees of freedom    (FIT_NDF)                        : 6
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.0661826
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.00438014
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+a               = 1.33765e-08      +/- 2.54e-10     (1.899%)
+
+
+*******************************************************************************
+Wed May 17 13:00:55 2023
+
+
+FIT:    data read from 'times.data' using 1:2
+        format = x:z
+        #datapoints = 7
+        residuals are weighted equally (unit weight)
+
+function used for fitting: g(x)
+	g(x) = b*x**2
+fitted parameters initialized with current variable values
+
+iter      chisq       delta/lim  lambda   b            
+   0 9.0934612284e+00   0.00e+00  1.81e-01    1.000000e-06
+   3 2.1121488747e-01  -1.34e-01  1.81e-04    7.224268e-06
+
+After 3 iterations the fit converged.
+final sum of squares of residuals : 0.211215
+rel. change during last iteration : -1.33716e-06
+
+degrees of freedom    (FIT_NDF)                        : 6
+rms of residuals      (FIT_STDFIT) = sqrt(WSSR/ndf)    : 0.187623
+variance of residuals (reduced chisquare) = WSSR/ndf   : 0.0352025
+
+Final set of parameters            Asymptotic Standard Error
+=======================            ==========================
+b               = 7.22427e-06      +/- 3.918e-07    (5.424%)

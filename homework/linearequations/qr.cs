@@ -30,14 +30,6 @@ public static class qr{
         return b; 
     }
 
-    public static double det(matrix R){
-        double sum = 0; 
-        for(int i = 0; i < R.size1; i++){
-            sum += R[i,i];
-        }
-        return sum; 
-    }
-
     public static matrix QRGSinvert(matrix Q, matrix R){
         matrix inverted = new matrix(Q.size2,Q.size1);
         //for each column in B there is a system of equations to solve, with the B-column unknown.
@@ -49,5 +41,14 @@ public static class qr{
             inverted[i] = QRGSsolve(Q,R,solVec); 
         }
         return inverted;
+    }
+
+    public static double det(matrix R){
+        double res = 1;
+        if(R.size1 != R.size2) throw new InvalidOperationException("Calculating determinant of non-square matrix.");
+        for(int i = 0; i < R.size1; i++){
+            res *= R[i,i];
+        }
+        return res;
     }
 }

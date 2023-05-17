@@ -7,6 +7,8 @@ using System.IO;
 public class ann{
     public int n; /* number of hidden neurons */
     public Func<double,double> f = x => x*Exp(-x*x); /* activation function */
+    public Func<double,double> deriv1 = x => (1-2*x*x)*Exp(-x*x); /* derivative of activation function */
+    public Func<double,double> deriv2 = x => Exp(-x*x)*(4*x*x*x-6*x); /* 2nd derivative of activation function */
     public vector p; /* network parameters */
     public ann(int n){
         this.n = n; 
@@ -36,14 +38,19 @@ public class ann{
         return result;
     }
 
+    public double integral(double a, double b){
+        return antiderivative(b) - antiderivative(a);
+    }
+
+
     public double derivative(double x){
-        //derivative of gaussian wavelet (x-a)/b * exp( ((x-a)/b)^2 ) is (2*(a-x)^2-b^2)/b^3 * exp( ((x-a)/b)^2 )
+        //derivative of gaussian wavelet (x-a)/b * exp( ((x-a)/b)^2 ) is (2*(a-x)^2+b^2)/b^3 * exp( ((x-a)/b)^2 )
         double result = 0;
         for(int i = 0; i < n; i++){
             double a_i = p[i];
             double b_i = p[n+i];
             double w_i = p[2*n+i];
-            result += w_i* (2*(a_i-x)*(a_i-x)-b_i*b_i)/Pow(b_i,3) * Exp( -Pow((a_i-x)/b_i,2) );
+            result += -w_i/b_i*deriv1( (a_i-x)/b_i ) ;
         }
         return result;
     }
@@ -55,7 +62,7 @@ public class ann{
             double a_i = p[i];
             double b_i = p[n+i];
             double w_i = p[2*n+i];
-            result += w_i* (2*(a_i-x))*(2*(a_i-x)*(a_i-x)-b_i*b_i)/Pow(b_i,3) * Exp( -Pow((a_i-x)/b_i,2) );;
+            result += -w_i/b_i*deriv2( (a_i-x)/b_i ) ;
         }
         return result;
     }
