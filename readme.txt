@@ -5,13 +5,13 @@ Done homeworks:
  ======================================
 | #  | homework      | A | B | C | Σ   |
  ======================================
-| 1  | LinEq         | 6 | 3 | 1 | 10  |
+| 1  | interpolation | 6 | 3 | 1 | 10  | x
 ---------------------------------------
-| 2  | EVD           | 6 | 3 | - |  9  |
+| 2  | LinEq         | 6 | 3 | 1 | 10  | x
 ---------------------------------------
-| 3  | LeastSquares  | 6 | 3 | 1 | 10  |
+| 3  | EVD           | 6 | 3 | - |  9  |
 ---------------------------------------
-| 4  | interpolation | 6 | 3 | - | 10  |
+| 4  | LeastSquares  | 6 | 3 | 1 | 10  |
 ---------------------------------------
 | 5  | ode           | 6 | 3 | - |  9  |
 ---------------------------------------
@@ -27,3 +27,6 @@ Done homeworks:
  ======================================
 |                    total points: 94  |
  ======================================
+
+The results/tests of the homework will be found in out.txt in each homework directory.
+Any plots will be in the Plots directory of that homework. 

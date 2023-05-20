@@ -1,0 +1,16 @@
+set terminal svg
+set output "Plots/Timing.svg"
+set key bottom right
+set xlabel "N"
+set ylabel "t [s]"
+set tics out
+set title "Time for QRGS-decomposition of NxN matrix"
+f(x) = a*x**3
+g(x) = b*x**2
+a = 0.000001
+b = 0.000001
+fit f(x) 'txts/times.data' using 1:2 via a
+fit g(x) 'txts/times.data' using 1:2 via b
+plot "txts/times.data" using ($1):($2) with points title "Data"\
+,f(x) with lines title "Fit to a*N^3"\
+,g(x) with lines title "Fit to a*N^2"\

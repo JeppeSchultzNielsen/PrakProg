@@ -1,0 +1,10 @@
+-------
+Part a)
+Solving u''=-u with initial conditions u0 = 0, u0'=1, should give sin(x). Plotted on Sin.svg.
+Solving damped pendulum with same parameters as in scipy.integrate.odeint manual. Plotted on DampedPendulum.svg.
+-------
+Part b)
+Driver has been improved. Now has option to give only endpoints, which has been plotted on DampedPendulum.svg.
+-------
+Part c)
+Solving three body problem with initial conditions as given on wikipedia...

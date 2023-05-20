@@ -1,7 +1,0 @@
-set terminal svg
-set output "Sin.svg"
-set key top right
-set xlabel "x"
-set ylabel "y"
-set tics out
-plot "txts/harmonicDiff.txt" using ($1):($2) with lines lt rgb "black" title "Solution to u''=-u with initial conditions u=0, u'=1"\

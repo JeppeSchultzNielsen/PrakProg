@@ -1,0 +1,8 @@
+set terminal svg
+set output "Plots/Rmax.svg"
+set key bottom right
+set xlabel "rmax [Bohr radii]"
+set ylabel "e0 [Hartree]"
+set tics out
+set title "Hydrogen electron binding energy as function of rmax"
+plot "txts/rmax.txt" using ($1):($2) with lines lt 2 title "rmax"

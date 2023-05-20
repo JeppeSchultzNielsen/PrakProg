@@ -1,0 +1,18 @@
+set terminal svg
+set output "Plots/Cinterp.svg"
+set key top right
+set xlabel "x"
+set ylabel "y"
+set tics out
+set title "Cubic"
+
+set samples 100
+set table "table_100"
+plot "txts/sinData.txt" smooth csplines
+unset table
+
+plot "txts/sinData.txt" using 1:2 with points title "10 points of Sin(x)"\
+,"txts/cinterp.txt" using ($1):($2) with lines title "Cubic interpolation"\
+,"txts/cinterp.txt" using ($1):($3) with lines title "Derivative"\
+,"txts/cinterp.txt" using ($1):($4) with lines title "Integral"\
+,"table_100" w l t "GNUplot spline"
