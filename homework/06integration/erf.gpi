@@ -1,5 +1,5 @@
 set terminal svg
-set output "Erf.svg"
+set output "Plots/Erf.svg"
 set key bottom right
 set xlabel "x"
 set ylabel "Erf(x)"

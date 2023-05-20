@@ -46,7 +46,7 @@ public static class main{
 			(xx_1 - xx_2)/Pow(d12,3) +(xx_3 - xx_2)/Pow(d23,3),
 			(xy_1 - xy_2)/Pow(d12,3) +(xy_3 - xy_2)/Pow(d23,3),
 			(xx_1 - xx_3)/Pow(d13,3) +(xx_2 - xx_3)/Pow(d23,3),
-			(xy_1 - xy_3)/Pow(d13,3) +(xy_3 - xy_2)/Pow(d23,3),
+			(xy_1 - xy_3)/Pow(d13,3) +(xy_2 - xy_3)/Pow(d23,3),
 			vx_1,
 			vy_1,
 			vx_2,
@@ -120,10 +120,17 @@ public static class main{
 		points = odesolver.driver(threebody,0,ya,6.3259,1e-3,1e-3,1e-3,xlistInit, ylistInit);
 		xs = points.Item1;
 		ys = points.Item2;
-		toWrite = "";
+		toWrite = $"{xs[0]}\t{ys[0][6]}\t{ys[0][7]}\t{ys[0][8]}\t{ys[0][9]}\t{ys[0][10]}\t{ys[0][11]}\n";
+		//to ensure "time correct animation", discard some points.
+		double currentTime = 0;
+		double dt = 0.02;
 		for(int i = 0; i < xs.size; i++){
-			toWrite += $"{xs[i]}\t{ys[i][6]}\t{ys[i][7]}\t{ys[i][8]}\t{ys[i][9]}\t{ys[i][10]}\t{ys[i][11]}\n";
+			if(xs[i] > currentTime+dt){
+				toWrite += $"{xs[i]}\t{ys[i][6]}\t{ys[i][7]}\t{ys[i][8]}\t{ys[i][9]}\t{ys[i][10]}\t{ys[i][11]}\n";
+				currentTime = xs[i];
+			}
 		}
 		File.WriteAllText("txts/threebody.txt", toWrite);
+		WriteLine("Solution shown in animation Threebody.gif");
 	}
 }

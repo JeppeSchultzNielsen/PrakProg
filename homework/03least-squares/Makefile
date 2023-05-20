@@ -1,16 +1,14 @@
-fit.svg : fit.gpi out.txt
-	gnuplot $< 
-
-out.txt : main.exe Makefile 
+out.txt Plots/fit.svg : fit.gpi main.exe Makefile txts/data.txt
 	mono main.exe > out.txt
+	gnuplot fit.gpi
 
-main.exe : main.cs matrix.dll qr.dll fitter.dll data.txt
+main.exe : main.cs matrix.dll qr.dll fitter.dll
 	mcs -target:exe -out:$@ $(filter %.cs,$^) $(addprefix -reference:,$(filter %.dll,$^))
 
 fitter.dll : fitter.cs matrix.dll qr.dll
 	mcs -target:library -out:$@ $(filter %.cs,$^) $(addprefix -reference:,$(filter %.dll,$^))
 
-data.txt : Makefile
+txts/data.txt : Makefile
 	>$@
 	echo 1\\t117\\t5 >> $@
 	echo 2\\t100\\t5 >> $@
@@ -23,4 +21,4 @@ data.txt : Makefile
 	echo 15\\t11.1\\t2 >> $@
 
 clean : 
-	rm -f main.exe out.txt data.txt fitter.dll evaluatedFit.txt fit.svg
+	rm -f main.exe out.txt fitter.dll txts/* Plots/*

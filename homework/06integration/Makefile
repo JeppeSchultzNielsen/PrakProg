@@ -1,4 +1,4 @@
-out.txt txts/errorTabulated.txt Erf.svg ErfResiduals.svg: main.exe Makefile erf.gpi erfResiduals.gpi
+out.txt txts/errorTabulated.txt Plots/Erf.svg Plots/ErfResiduals.svg: main.exe Makefile erf.gpi erfResiduals.gpi
 	>txts/errorTabulated.txt
 	echo 0 0 >> txts/errorTabulated.txt
 	echo 0.1 0.112462916 >> txts/errorTabulated.txt
@@ -20,4 +20,4 @@ integrator.dll : integrator.cs
 	mcs -target:library -out:$@ $(filter %.cs,$^) $(addprefix -reference:,$(filter %.dll,$^))
 
 clean : 
-	rm -f main.exe out.txt integrator.dll txts/* *.svg
+	rm -f main.exe out.txt integrator.dll txts/* *.svg Plots/*

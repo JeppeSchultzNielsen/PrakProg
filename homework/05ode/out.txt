@@ -8,3 +8,4 @@ Driver has been improved. Now has option to give only endpoints, which has been 
 -------
 Part c)
 Solving three body problem with initial conditions as given on wikipedia...
+Solution shown in animation Threebody.gif

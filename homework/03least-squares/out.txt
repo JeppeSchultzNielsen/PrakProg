@@ -1,0 +1,16 @@
+-------
+Part a)
+A linear fitter has been made...
+-------
+Part b)
+Making fit to Rutherford and Soddy's data...
+Covariance matrix:
+
+   0.00115   0.000178 
+  0.000178   4.83e-05 
+fitted T1/2 = 4.08E+0 +- 2E-1 d, modern value is 3.6319+-0.0023 d.
+Means we're not entirely within an errorbar of modern value.
+-------
+Part c)
+Creating exponential decay data with parameters shifted by the errors from the covariance matrix...
+Result can be seen on Fit.svg.

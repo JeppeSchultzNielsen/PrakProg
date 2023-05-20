@@ -1,5 +1,5 @@
 set terminal svg
-set output "ErfResiduals.svg"
+set output "Plots/ErfResiduals.svg"
 set key bottom right
 set xlabel "x"
 set ylabel "Absolute difference with tabulated value"

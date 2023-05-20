@@ -1,0 +1,44 @@
+------
+Part a)
+Testing integrator...
+Unless otherwise stated, the absolute and relative accuracy goal is 1e-3.
+sqrt(x) integrated from 0 to 1 is 0.666953909054655, should be 0.666666666666667. Done in 7 steps.
+
+1/sqrt(x) integrated from 0 to 1 is 1.99996150007805, should be 2. Done in 4285 steps.
+
+4/sqrt(1-x^2) integrated from 0 to 1 is 3.14183457802727, should be 3.14159265358979. Done in 13 steps.
+
+4/sqrt(1-x^2) integrated from 0 to 1 is with absolute and relative accuracy goal 1e-7 3.14159265375762, should be 3.14159265358979. Done in 795 steps.
+
+ln(x)/sqrt(x) integrated from 0 to 1 is -3.99991705899915, should be -4. Done in 4301 steps.
+
+Calculation of the error function with absolute integration error 1e-7 and relative error 1e-6 has been plotted on Erf.svg.
+The difference to the tabulated points for my calculation and the Abromowitz/Stegun approximation can be seen on ErfResiduals.svg.
+------
+Part b)
+4/sqrt(1-x^2) integrated from 0 to 1 using Clenshaw-Curtis transformation is 3.1415763864835, should be 3.14159265358979. Done in 21 steps.
+
+ln(x)/sqrt(x) integrated from 0 to 1 using Clenshaw-Curtis transformation is -3.99987385646141, should be -4. Done in 47 steps.
+This was obviously a lot faster than the calculation in part a).
+
+1/sqrt(x) integrated from 0 to 1 using Clenshaw-Curtis transformation with accuracy equal to scipy.integrate.quad is 2.00000000000002, should be 2. Done in 913 steps.
+
+Results from python (accuracy could appearantly not be lowered from default, 1.48e-8):
+1/sqrt(x) integrated from 0 to 1 using scipy.integrate.quad is 1.9999999999999984, should be 2. Done in 231 steps.
+
+ln(x)/sqrt(x)  integrated from 0 to 1 using scipy.integrate.quad is -4.00000000000009, should be 4. Done in 315 steps.
+scipy.integrate.quad seems to have more efficient methods for integrals.
+------
+Part c)
+Testing error:
+4/sqrt(1-x^2) integrated from 0 to 1 is 3.14183457802727+-0.00251182601633047, should be 3.14159265358979. Done in 13 steps.
+4/sqrt(1-x^2) integrated from 0 to 1 with absolute and relative accuracy goal 1e-5 is 3.14159283639132+-4.10735417966707E-05, should be 3.14159265358979. Done in 113 steps.
+Testing integrals with infinite bounds:
+e^(-x^2) integrated from -inf to inf with absolute and relative accuracy goal 1.48e-8 is 1.77245383206731+-2.07693859839667E-07, should be sqrt(pi)=1.77245385090552. Done in 3323 steps.
+scipy.integrate.quad got 1.7724538509055159 in 270 evaluations.
+
+e^(-x) integrated from -1 to inf with absolute and relative accuracy goal 1.48e-8 is 2.71828182816324+-2.25432508098073E-07, should be e=2.71828182845905. Done in 2173 steps.
+scipy.integrate.quad got 2.718281828459045 in 135 evaluations.
+
+e^(x) integrated from -inf to 1 with absolute and relative accuracy goal 1.48e-8 is 2.71828182816324+-2.25432508098073E-07, should be e=2.71828182845905. Done in 2173 steps.
+scipy.integrate.quad got 2.718281828459045 in 135 evaluations.

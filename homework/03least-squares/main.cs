@@ -7,12 +7,14 @@ using System.IO;
 public static class main{
 
 	public static void Main(){
-
+		WriteLine("-------");
+		WriteLine("Part a)");
+		WriteLine("A linear fitter has been made...");
 		//we're fitting to ln(y)=ln(a)-λt with errors δln(y)=δy/y.
 		var fs = new Func<double,double>[2];
 		fs[0] = x => 1;
 		fs[1] = x => -x; 
-		string data = File.ReadAllText("data.txt");
+		string data = File.ReadAllText("txts/data.txt");
 		string[] points = data.Split("\n");
 		int noPoints = points.Length - 1; //last line is empty
 		vector xs = new vector(noPoints);
@@ -30,13 +32,19 @@ public static class main{
 		var poptpcov = fitter.lsfit(fs,xs,ys,dys);
 		var c = poptpcov.Item1;
 		var pcov = poptpcov.Item2;
+		WriteLine("-------");
+		WriteLine("Part b)");
+		WriteLine("Making fit to Rutherford and Soddy's data...");
 		WriteLine("Covariance matrix:");
 		pcov.print();
 		double dlambda = Sqrt(pcov[1,1]);
 		double doffset = Sqrt(pcov[0,0]);
-		WriteLine($"fitted T1/2 = {Log(2)/c[1]:e3}+-{Log(2)*dlambda/c[1]/c[1]:e0} d, modern value is 3.6319+-0.0023 d.");
+		WriteLine($"fitted T1/2 = {Log(2)/c[1]:#.##E+0} +- {Log(2)*dlambda/c[1]/c[1]:#.E+0} d, modern value is 3.6319+-0.0023 d.");
 		WriteLine("Means we're not entirely within an errorbar of modern value.");
 
+		WriteLine("-------");
+		WriteLine("Part c)");
+		WriteLine("Creating exponential decay data with parameters shifted by the errors from the covariance matrix...");
 		//Write fitted function data to txt file
 		string toWrite = "";
 		for(int i = 0; i < 1000; i++){
@@ -56,7 +64,8 @@ public static class main{
 			nError4 = Exp(nError4);
 			toWrite += $"{t}\t{n}\t{nError1}\t{nError2}\t{nError3}\t{nError4}\n";
 		}
-		File.WriteAllText("evaluatedFit.txt", toWrite);
+		File.WriteAllText("txts/evaluatedFit.txt", toWrite);
+		WriteLine("Result can be seen on Fit.svg.");
 
 	}
 }
