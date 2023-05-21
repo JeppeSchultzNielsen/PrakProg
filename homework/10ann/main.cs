@@ -14,8 +14,17 @@ public static class main{
 		return Sin(x);
 	}
 
+	public static double harmonicDiff(vector d){
+		return d[1]+d[3];
+	}
+
+	public static double exp(vector d){
+		return d[0]-d[2];
+	}
+
 	public static void Main(){
-		WriteLine("Part A");
+		WriteLine("--------");
+		WriteLine("Part a)");
 		//create training set 
 		int dataSize = 20;
 		vector xs = new vector(dataSize);
@@ -30,8 +39,8 @@ public static class main{
 			toWrite += $"{xs[i]}\t{ys[i]}\n";
 		}
 		File.WriteAllText("txts/trainingPoints.txt",toWrite);
-		WriteLine("Making interpolation with 7 neurons...");
-		ann myAnn = new ann(7);
+		WriteLine("Making interpolation with 4 neurons...");
+		ann myAnn = new ann(4);
 		myAnn.train(xs,ys);
 
 		//create interpolation set
@@ -44,11 +53,9 @@ public static class main{
 		File.WriteAllText("txts/7neuronInterp.txt",toWrite);
 
 		WriteLine("Interpolation can be seen in Interpolation.svg");
-		WriteLine("");
-		WriteLine("Part B");
-		WriteLine("Figures have been made. Both with Cos(5x-1)*exp(-x^2) and sin(2x).");
-		WriteLine("Calculating integral can be done in a very stable way. 1st derivative looks somewhat convincing, 2nd derivative is very bad.");
-		WriteLine("This is fair because we are really limited by few gaussian wavelets, which may have extreme second derivatives.");
+		WriteLine("--------");
+		WriteLine("Part b)");
+		WriteLine("Figures with interpolations and derivatives have been made. Both with Cos(5x-1)*exp(-x^2) and sin(x).");
 
 		toWrite = "";
 		for(int i = 0; i < interpolationPoints; i++){
@@ -69,7 +76,7 @@ public static class main{
 		}
 		File.WriteAllText("txts/sinTraining.txt",toWrite);
 
-		myAnn = new ann(10);
+		myAnn = new ann(4);
 		myAnn.train(xs,ys);
 		toWrite = "";
 		for(int i = 0; i < interpolationPoints; i++){
@@ -77,6 +84,31 @@ public static class main{
 			toWrite += $"{x}\t{myAnn.integral(0,x)}\t{myAnn.derivative(x)}\t{myAnn.derivative2(x)}\t{myAnn.response(x)}\n";
 		}
 		File.WriteAllText("txts/sinDerivatives.txt",toWrite);
+		WriteLine("--------");
+		WriteLine("Part c)");
+		WriteLine("Added option of training for solving differential equation.");
+		WriteLine("Training on function u''+u=0 from 0 to 2pi with y(0)=0 and y'(0)=1...");
+		myAnn = new ann(7);
+		myAnn.trainDiffEq(harmonicDiff,0,2.0*PI,0,0,1,1,1);
+
+		toWrite = "";
+		for(int i = 0; i < interpolationPoints; i++){
+			double x = 2.0*PI * i / interpolationPoints;
+			toWrite += $"{x}\t{myAnn.response(x)}\t{myAnn.derivative(x)}\t{myAnn.derivative2(x)}\n";
+		}
+		File.WriteAllText("txts/diffEqSin.txt",toWrite);
+		WriteLine("As can be seen on the plot DiffEqSin.svg, this results in a sine function, as expected.");
+		WriteLine("Training on function u''+u=0 from 0 to 2pi with y(pi)=-1 and y'(pi)=0...");
+		myAnn = new ann(7);
+		myAnn.trainDiffEq(harmonicDiff,0,2.0*PI,PI,-1,0,1,1);
+
+		toWrite = "";
+		for(int i = 0; i < interpolationPoints; i++){
+			double x = 2.0*PI * i / interpolationPoints;
+			toWrite += $"{x}\t{myAnn.response(x)}\t{myAnn.derivative(x)}\t{myAnn.derivative2(x)}\n";
+		}
+		File.WriteAllText("txts/diffEqCos.txt",toWrite);
+		WriteLine("As can be seen on the plot DiffEqCos.svg, this results in a cos function, as expected.");
 
 	}
 }

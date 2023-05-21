@@ -1,9 +1,15 @@
-Part A
+--------
+Part a)
 Making training points..
-Making interpolation with 7 neurons...
+Making interpolation with 4 neurons...
 Interpolation can be seen in Interpolation.svg
-
-Part B
-Figures have been made. Both with Cos(5x-1)*exp(-x^2) and sin(2x).
-Calculating integral can be done in a very stable way. 1st derivative looks somewhat convincing, 2nd derivative is very bad.
-This is fair because we are really limited by few gaussian wavelets, which may have extreme second derivatives.
+--------
+Part b)
+Figures with interpolations and derivatives have been made. Both with Cos(5x-1)*exp(-x^2) and sin(x).
+--------
+Part c)
+Added option of training for solving differential equation.
+Training on function u''+u=0 from 0 to 2pi with y(0)=0 and y'(0)=1...
+As can be seen on the plot DiffEqSin.svg, this results in a sine function, as expected.
+Training on function u''+u=0 from 0 to 2pi with y(pi)=-1 and y'(pi)=0...
+As can be seen on the plot DiffEqCos.svg, this results in a cos function, as expected.

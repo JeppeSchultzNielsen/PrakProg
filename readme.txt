@@ -23,9 +23,9 @@ Done homeworks:
 ---------------------------------------
 | 9  | minimization  | 6 | 3 | 1 | 10  |
 ---------------------------------------
-| 10 | ann           | 6 | 3 | - |  9  |
+| 10 | ann           | 6 | 3 | 1 | 10  |
  ======================================
-|                    total points: 98  |
+|                    total points: 99  |
  ======================================
 
 The results/tests of the homework will be found in out.txt in each homework directory.
