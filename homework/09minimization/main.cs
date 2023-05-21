@@ -86,5 +86,32 @@ public static class main{
 		File.WriteAllText("txts/fittedData.dat",toWrite);
 		WriteLine($"---------");
 		WriteLine("Part c)");
+		WriteLine("Attempting to find minimum of Rosenbrock function with downhill simplex...");
+		List<vector> starts = new List<vector>();
+		starts.Add(new vector(new double[]{1,-3}));
+		starts.Add(new vector(new double[]{-5,0}));
+		starts.Add(new vector(new double[]{0,5}));
+		vector simplexRes = minimizer.downhillSimplex(rosenbrock,starts,1e-20);
+		WriteLine($"With initial simplex (1,-3), (-5,0), (0,5), found minimal point using downhill simplex at: ({simplexRes[0]},{simplexRes[1]})");
+		starts = new List<vector>();
+		starts.Add(new vector(new double[]{0,1}));
+		starts.Add(new vector(new double[]{1,0}));
+		starts.Add(new vector(new double[]{2,2}));
+		simplexRes = minimizer.downhillSimplex(rosenbrock,starts,1e-20);
+		WriteLine($"With initial simplex (0,1), (1,0), (2,2), found minimal point using downhill simplex at: ({simplexRes[0]},{simplexRes[1]})");
+		starts = new List<vector>();
+		starts.Add(new vector(new double[]{-2,-1}));
+		starts.Add(new vector(new double[]{0,4}));
+		starts.Add(new vector(new double[]{-2,3}));
+		simplexRes = minimizer.downhillSimplex(rosenbrock,starts,1e-20);
+		WriteLine($"With initial simplex (-2,-1), (0,4), (-2,3), found minimal point using downhill simplex at: ({simplexRes[0]},{simplexRes[1]})");
+		WriteLine("Attempting to fit Breit-Wigner to Higgs boson data using downhill simplex...");
+		starts = new List<vector>();
+		starts.Add(new vector(new double[]{16,126,1}));
+		starts.Add(new vector(new double[]{20,126.5,2}));
+		starts.Add(new vector(new double[]{25,127,3}));
+		fitparams = minimizer.fit(breitWigner,guesses,energy, signal, error, 1e-17);
+		WriteLine($"With initial simplex (16,126,1), (20,126.5,2), (25,127,3), found Breit-Wigner parameters: A = {fitparams[0]}, m = {fitparams[1]}, Γ = {fitparams[2]}");
+		WriteLine("This is the same result as in b).");
 	}
 }

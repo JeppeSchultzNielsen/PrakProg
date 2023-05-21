@@ -1,19 +1,19 @@
 -------
 Part a)
 Calculating some test integrals with plain Monte Carlo integrator with 1000 points: 
-Int( r^2sin(theta) ) with r from 0 to 1 and theta from 0 to 2pi is calculated as: 0.664004229770558 +- 0.0231024078852554
+Int( r^2sin(theta) ) with r from 0 to 1 and theta from 0 to 2pi is calculated as: 0.700121690713512 +- 0.0237228640004208
 It should be 1/(2pi) * 4/3 * pi * 1^3 = 2/3 = 0.666666666666667
-Int( e^(x^2+y^2) ) with x from 0 to 1 and y from 0 to 1 is calculated as: 0.555193699951339 +- 0.00688874736709442
+Int( e^(x^2+y^2) ) with x from 0 to 1 and y from 0 to 1 is calculated as: 0.556339089598698 +- 0.00698610086840242
 It should be 0.557746
-Int( 1/pi^3 * 1 / (1 - cos(x)*cos(y)*cos(z) ) ) with all limits from 0 to pi is calculated as: 1.62756799648604 +- 0.269933248361678
+Int( 1/pi^3 * 1 / (1 - cos(x)*cos(y)*cos(z) ) ) with all limits from 0 to pi is calculated as: 1.35072566388214 +- 0.0611971930503191
 It should be 1.393203929685676
 
 Calculating some test integrals with plain Monte Carlo integrator with 100000 points: 
-Int( r^2sin(theta) ) with r from 0 to 1 and theta from 0 to 2pi is calculated as: 0.665914551203513 +- 0.0023302326493021
+Int( r^2sin(theta) ) with r from 0 to 1 and theta from 0 to 2pi is calculated as: 0.663059927640576 +- 0.00231675373733793
 It should be 1/(2pi) * 4/3 * pi * 1^3 = 2/3 = 0.666666666666667
-Int( e^(x^2+y^2) ) with x from 0 to 1 and y from 0 to 1 is calculated as: 0.557736390010114 +- 0.000682673669800158
+Int( e^(x^2+y^2) ) with x from 0 to 1 and y from 0 to 1 is calculated as: 0.557647487067793 +- 0.000682942577485857
 It should be 0.557746
-Int( 1/pi^3 * 1 / (1 - cos(x)*cos(y)*cos(z) ) ) with all limits from 0 to pi is calculated as: 1.41076046328042 +- 0.0262315758708029
+Int( 1/pi^3 * 1 / (1 - cos(x)*cos(y)*cos(z) ) ) with all limits from 0 to pi is calculated as: 1.37027169091706 +- 0.0123797513537449
 It should be 1.393203929685676
 
 -------
@@ -41,9 +41,9 @@ In plain Monte Carlo, going from 1k to 100k samples improved precision by a fact
 Part c)
 Now I will calculate the integrals with stratified sampling.
 An example of the distribution of points when using stratified sampling can be seen on StratifiedSampling.svg.
-Integrating a circle of radius 1 and height 1 with stratified sampling with x and y from 0 to 1 is calculated as: 0.760845836821751 +- NaN with 100000 points
-Integrating a circle of radius 1 and height 1 with plain sampling with x and y from 0 to 1 is calculated as: 0.78497 +- 0.00129920013508312 with 100000 points
-Integrating a circle of radius 1 and height 1 with stratified sampling with x and y from 0 to 1 is calculated as: 0.785540911452998 +- 9.21235505261316E-05 with 1e6 points
-Integrating a circle of radius 1 and height 1 with plain sampling with x and y from 0 to 1 is calculated as: 0.784822 +- 0.000410945772962808 with 1e6 points
+Integrating a circle of radius 1 and height 1 with stratified sampling with x and y from 0 to 1 is calculated as: 0.790626984991076 +- 0.00127501187891531 with 100000 points
+Integrating a circle of radius 1 and height 1 with plain sampling with x and y from 0 to 1 is calculated as: 0.78401 +- 0.00130130057980468 with 100000 points
+Integrating a circle of radius 1 and height 1 with stratified sampling with x and y from 0 to 1 is calculated as: 0.785298538280014 +- 9.32132949092452E-05 with 1e6 points
+Integrating a circle of radius 1 and height 1 with plain sampling with x and y from 0 to 1 is calculated as: 0.7855 +- 0.00041047502969121 with 1e6 points
 It should be pi/4, 0.785398163397448
 A comparison of the variance as a function of number of points between all the sampling methods has been saved to Convergence.svg.
