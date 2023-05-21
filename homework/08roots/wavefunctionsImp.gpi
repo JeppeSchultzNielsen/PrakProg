@@ -1,0 +1,11 @@
+set terminal svg
+set output "Plots/WavefunctionsImp.svg"
+set key top right
+set xlabel "r [Bohr radii]"
+set ylabel "Reduced radial wave function"
+set tics out
+set title "Reduced radial wave functions for electrons in hydrogen with improved boundary condition"
+plot "txts/groundstate.txt" using ($1):($2) with lines lt rgb "black" title "Numerical solution, groundstate"\
+,"txts/groundstate.txt" using ($1):($3) with lines lt rgb "red" title "Analytical solution, groundstate"\
+,"txts/1stexcited.txt" using ($1):($2) with lines lt rgb "blue" title "Numerical solution, 1st excited"\
+,"txts/2ndexcited.txt" using ($1):($2) with lines lt rgb "yellow" title "Numerical solution, 2nd excited"\

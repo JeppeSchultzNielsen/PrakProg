@@ -1,0 +1,27 @@
+------
+Part a)
+Testing Newton's method for some functions.
+Root of f(x,y) -> (x^2,y^2) is (0.00683593793239975,0.00683593793239975) to a precision of 1e-4, where the function evaluates as (4.67300474156218E-05,4.67300474156218E-05)
+Root of grad(Rosenbrock) is (1.00000123572419,1.00000244416285) to a precision of 1e-4, where the function evaluates as (1.58577380873791E-05,-2.72870619433263E-06)
+Test of overriding function for 1d root finding:
+Root of 4*x^3+5*x^2+6*x+7 is -1.2077529310401 to a precision of 1e-4, where the function evaluates as is -1.99408164469617E-05
+------
+Part b)
+By shooting method, binding energy of lowest bound S-electron in H is -0.49997512561396 Hartree. Expected value is 0.5
+The wavefunction corresponding to this eigenenergy is plotted on Wavefunctions.svg, along with the analytical solution. They only differ at the very end.
+The convergence to the ground state energy with respect to different parameters has been plotted.
+Varying rmin...
+Varying rmax...
+Varying abs accuracy...
+Varying relative accuracy...
+------
+Part c)
+A more precise boundary condition has been implemented. Convergence plots similar to in part b) has been made.
+Varying rmin...
+Varying rmax...
+Varying abs accuracy...
+Varying relative accuracy...
+Attempting to find higher excited states. They should be at energies -0.5/n^2: -0.5, -0.125 and -0.0555555555555556
+With initial guess for E=-1, found excited state at -0.500001981707238
+With initial guess for E=-0.1, found excited state at -0.124419675552866
+With initial guess for E=-0.05, found excited state at -0.0370303099607522

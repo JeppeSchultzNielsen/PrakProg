@@ -1,0 +1,49 @@
+-------
+Part a)
+Calculating some test integrals with plain Monte Carlo integrator with 1000 points: 
+Int( r^2sin(theta) ) with r from 0 to 1 and theta from 0 to 2pi is calculated as: 0.664004229770558 +- 0.0231024078852554
+It should be 1/(2pi) * 4/3 * pi * 1^3 = 2/3 = 0.666666666666667
+Int( e^(x^2+y^2) ) with x from 0 to 1 and y from 0 to 1 is calculated as: 0.555193699951339 +- 0.00688874736709442
+It should be 0.557746
+Int( 1/pi^3 * 1 / (1 - cos(x)*cos(y)*cos(z) ) ) with all limits from 0 to pi is calculated as: 1.62756799648604 +- 0.269933248361678
+It should be 1.393203929685676
+
+Calculating some test integrals with plain Monte Carlo integrator with 100000 points: 
+Int( r^2sin(theta) ) with r from 0 to 1 and theta from 0 to 2pi is calculated as: 0.665914551203513 +- 0.0023302326493021
+It should be 1/(2pi) * 4/3 * pi * 1^3 = 2/3 = 0.666666666666667
+Int( e^(x^2+y^2) ) with x from 0 to 1 and y from 0 to 1 is calculated as: 0.557736390010114 +- 0.000682673669800158
+It should be 0.557746
+Int( 1/pi^3 * 1 / (1 - cos(x)*cos(y)*cos(z) ) ) with all limits from 0 to pi is calculated as: 1.41076046328042 +- 0.0262315758708029
+It should be 1.393203929685676
+
+-------
+Part b)
+Now instead of sampling completely random, I will sample using quasirandom numbers from Halton sequences.
+I will estimate the error by comparing the result with sampling from Halton sequences in a different bases.
+Hopefully this will decrease the discrepancy and the integral should converge faster.
+
+Calculating some test integrals with Halton Monte Carlo integrator with 1000 points: 
+Int( r^2sin(theta) ) with r from 0 to 1 and theta from 0 to 2pi is calculated as: 0.66353704457738 +- 0.057998679653891
+It should be 1/(2pi) * 4/3 * pi * 1^3 = 2/3 = 0.666666666666667
+Int( e^(x^2+y^2) ) with x from 0 to 1 and y from 0 to 1 is calculated as: 0.559054569653787 +- 0.00967454203449924
+It should be 0.557746
+
+Calculating some test integrals with Halton Monte Carlo integrator with 100000 points: 
+Int( r^2sin(theta) ) with r from 0 to 1 and theta from 0 to 2pi is calculated as: 0.66662766710737 +- 0.000491987019027196
+It should be 1/(2pi) * 4/3 * pi * 1^3 = 2/3 = 0.666666666666667
+Int( e^(x^2+y^2) ) with x from 0 to 1 and y from 0 to 1 is calculated as: 0.557769864238247 +- 0.000145069720089652
+It should be 0.557746
+
+Using the Halton sequence seems to allow much faster convergence than plain Monte Carlo;
+In plain Monte Carlo, going from 1k to 100k samples improved precision by a factor 10, with Halton sequence its almost a factor 100.
+
+-------
+Part c)
+Now I will calculate the integrals with stratified sampling.
+An example of the distribution of points when using stratified sampling can be seen on StratifiedSampling.svg.
+Integrating a circle of radius 1 and height 1 with stratified sampling with x and y from 0 to 1 is calculated as: 0.760845836821751 +- NaN with 100000 points
+Integrating a circle of radius 1 and height 1 with plain sampling with x and y from 0 to 1 is calculated as: 0.78497 +- 0.00129920013508312 with 100000 points
+Integrating a circle of radius 1 and height 1 with stratified sampling with x and y from 0 to 1 is calculated as: 0.785540911452998 +- 9.21235505261316E-05 with 1e6 points
+Integrating a circle of radius 1 and height 1 with plain sampling with x and y from 0 to 1 is calculated as: 0.784822 +- 0.000410945772962808 with 1e6 points
+It should be pi/4, 0.785398163397448
+A comparison of the variance as a function of number of points between all the sampling methods has been saved to Convergence.svg.

@@ -1,8 +1,0 @@
-set terminal svg
-set output "Relaccconvergence.svg"
-set key top right
-set xlabel "Relative accuracy"
-set ylabel "Abs(E_{numeric} - E_{analytic})/E_{analytic}"
-set tics out
-set title "Convergence as function of relative accuracy of ODE solver"
-plot "txts/epsaccconvergence.txt" using ($1):($2) with lines lt rgb "black" title "Relative accuracy convergence"\

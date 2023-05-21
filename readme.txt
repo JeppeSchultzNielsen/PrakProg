@@ -19,13 +19,13 @@ Done homeworks:
 ---------------------------------------
 | 7  | mc integration| 6 | 3 | 1 | 10  |
 ---------------------------------------
-| 8  | roots         | 6 | 3 | - |  9  |
+| 8  | roots         | 6 | 3 | 1 | 10  |
 ---------------------------------------
 | 9  | minimization  | 6 | 3 | - |  9  |
 ---------------------------------------
 | 10 | ann           | 6 | 3 | - |  9  |
  ======================================
-|                    total points: 96  |
+|                    total points: 97  |
  ======================================
 
 The results/tests of the homework will be found in out.txt in each homework directory.

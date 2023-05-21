@@ -1,0 +1,10 @@
+set terminal svg
+set output "Plots/StratifiedSampling.svg"
+set key top right
+set ylabel "y"
+set xlabel "x"
+set tics out
+set title "Points used by stratified sampling algorithm of quarter of cylinder."
+set style fill  transparent solid 0.05 noborder
+set style circle radius 0.01
+plot 'txts/test.txt' u 1:2 with circles lc rgb "blue" title "Points"

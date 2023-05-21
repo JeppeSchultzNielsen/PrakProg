@@ -1,9 +1,0 @@
-set terminal svg
-set output "Wavefunctions.svg"
-set key top right
-set xlabel "r [Bohr radii]"
-set ylabel "Reduced radial wave function"
-set tics out
-set title "Reduced radial wave functions of S-wave electrons in hydrogen"
-plot "txts/wavefunctions.txt" using ($1):($2) with lines lt rgb "black" title "Numerical solution"\
-,"txts/wavefunctions.txt" using ($1):($3) with lines lt rgb "red" title "Analytical solution"\

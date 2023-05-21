@@ -1,9 +1,0 @@
-Exercise A:
-Root of f(x,y) -> (x^2,y^2) is (0.00683593793239975,0.00683593793239975), which gives (4.67300474156218E-05,4.67300474156218E-05)
-Root of grad(Rosenbrock) is (1.00000123572419,1.00000244416285), which gives (1.58577380873791E-05,-2.72870619433263E-06)
-Test of overriding function for 1d root finding
-Root of 4*x^3+5*x^2+6*x+7 is NaN, where the function is NaN
-
-Part b)
-By shooting method, binding energy of lowest bound S-electron in H is -0.499990269277495 Hartree. Expected value is 0.5
-The wavefunction corresponding to this eigenenergy is plotted on Wavefunctions.svg, along with the analytical solution. They only differ at the very end.

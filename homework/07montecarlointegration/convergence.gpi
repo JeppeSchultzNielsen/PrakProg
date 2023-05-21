@@ -1,0 +1,12 @@
+set terminal svg
+set output "Plots/Convergence.svg"
+set key top right
+set ylabel "Variance"
+set xlabel "Number of points used"
+set tics out
+set title "Estimated error in Monte carlo integration over quarter of cylinder with r=1 and h=1"
+set logscale x 10
+set logscale y 10
+plot "txts/convergence.txt" using 1:2 with points title "Plain mc"\
+,"txts/convergence.txt" using 1:3 with points title "Halton sampling"\
+,"txts/convergence.txt" using 1:4 with points title "Stratified sampling"\

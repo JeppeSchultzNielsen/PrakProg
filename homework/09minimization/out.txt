@@ -1,0 +1,17 @@
+------
+Part a)
+Testing minimizer:
+Minimizer found minimum of x^2+6 at 0, it should be at 0.
+Minimizer found minimum of Rosenbrock function at (0.999995521636286,0.999991035660246), it should be at (1,1).
+Minimizer found minimum of Himmelblau function at (2.9999999774871,1.99999999870852), it should be at (3,2).
+Other minima of Himmelblau should also exist. We can get them by using different initial guesses.
+With initial guess (-3,3) found minimum of Himmelblau function at (-2.80511810728539,3.13131249524884), it should be at (-2.805,3.131).
+With initial guess (-3,-3) found minimum of Himmelblau function at (-3.77931029037296,-3.28318602749171), it should be at (-3.779,-3.283).
+With initial guess (3,-3) found minimum of Himmelblau function at (3.58442831422676,-1.84812653496707), it should be at (3.584,-1.848).
+---------
+Part b)
+Fitting Breit-Wigner to higgs data with guesses A = 16, m = 126, Γ = 1
+Fit concluded with parameters A = 9.88153445445694, m = 125.972169718572, Γ = 2.08741041524915
+Fit plotted on Higgs.svg
+---------
+Part c)

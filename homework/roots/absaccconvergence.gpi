@@ -1,8 +1,0 @@
-set terminal svg
-set output "Absaccconvergence.svg"
-set key top right
-set xlabel "Absolute accuracy"
-set ylabel "Abs(E_{numeric} - E_{analytic})/E_{analytic}"
-set tics out
-set title "Convergence as function of absolute accuracy of ODE solver"
-plot "txts/absaccconvergence.txt" using ($1):($2) with lines lt rgb "black" title "Absolute accuracy convergence"\

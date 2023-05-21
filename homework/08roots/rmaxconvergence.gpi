@@ -1,0 +1,9 @@
+set terminal svg
+set output "Plots/Rmaxconvergence.svg"
+set key top right
+set xlabel "rmax [Bohr radii]"
+set ylabel "Abs(E_{numeric} - E_{analytic})/E_{analytic}"
+set tics out
+set logscale y
+set title "Convergence as function of rmax"
+plot "txts/rmaxconvergence.txt" using ($1):($2) with lines lt rgb "black" title "rmax convergence"\

@@ -3,18 +3,18 @@ master thread: waiting for other threads...
 thread1 a = 1 b = 500000001
 thread1 partialsum = 20.6073343222888
 Totalsum: 20.6073343222888
-real 2.44
-user 2.41
-sys 0.02
+real 1.84
+user 1.83
+sys 0.00
 nterms=500000000 nthreads=2
 master thread: waiting for other threads...
-thread1 a = 1 b = 250000001
 thread2 a = 250000001 b = 500000001
+thread1 a = 1 b = 250000001
 thread1 partialsum = 19.9141871427291
 thread2 partialsum = 0.693147179559917
 Totalsum: 20.607334322289
-real 9.88
-user 19.45
+real 1.50
+user 2.40
 sys 0.00
 nterms=500000000 nthreads=3
 master thread: waiting for other threads...
@@ -22,29 +22,29 @@ thread1 a = 1 b = 166666667
 thread2 a = 166666667 b = 333333333
 thread3 a = 333333333 b = 499999999
 thread3 partialsum = 0.40546510760821
-thread2 partialsum = 0.693147179060259
 thread1 partialsum = 19.5087220316203
+thread2 partialsum = 0.693147179060259
 Totalsum: 20.6073343182888
-real 2.83
-user 6.13
-sys 0.02
+real 1.22
+user 3.38
+sys 0.01
 nterms=500000000 nthreads=4
 master thread: waiting for other threads...
-thread1 a = 1 b = 125000001
 thread2 a = 125000001 b = 250000001
-thread4 a = 375000001 b = 500000001
+thread1 a = 1 b = 125000001
 thread3 a = 250000001 b = 375000001
+thread4 a = 375000001 b = 500000001
 thread4 partialsum = 0.287682072118434
 thread3 partialsum = 0.405465107441525
-thread1 partialsum = 19.2210399641691
 thread2 partialsum = 0.693147178559909
+thread1 partialsum = 19.2210399641691
 Totalsum: 20.6073343222889
-real 3.32
-user 7.89
-sys 0.02
+real 0.93
+user 3.03
+sys 0.00
 Calculating with Parallel.For nterms=500000000 nthreads=1
-nterms = 500000000, sum = 14.5589960734978
+nterms = 500000000, sum = 14.5132523401292
 Parallel.For gives wrong results (and is slower) because in the way it is currently written using a global variable which all of the threads try to access which is a race condition. It is also implemented using a delegate, which is slower than just doing the arithmetic in the ordinary for-loops because of the function call.
-real 5.38
-user 29.87
-sys 0.10
+real 4.25
+user 16.71
+sys 0.01
