@@ -22,10 +22,6 @@ public static class main{
 		WriteLine("Q*R is A");
 		matrix C = A*R;
 		C.print();
-		var inv2 = qr.QRGSinvert(A,R);
-		inv2.print();
-		matrix prod = A*R*inv2;
-		prod.print();
 
 		var rnd = new System.Random(1); /* or any other seed */
 
@@ -57,17 +53,17 @@ public static class main{
 		WriteLine("Which is the same as the previously randomly generated vector, indicating we have the solution for x.");
 		WriteLine("Now test calculation of determinant of matrix");
 		size = 2;
-		rand = new matrix(size,size);
-		tri = new matrix(size,size);
+		matrix twobytwo = new matrix(size,size);
+		matrix tritwo = new matrix(size,size);
 		for(int i = 0; i < size; i++){
 			for(int j = 0; j < size; j++){
-				rand[i,j] = 2*rnd.NextDouble() - 1;
+				twobytwo[i,j] = 2*rnd.NextDouble() - 1;
 			}
 		}
-		rand.print();
-		WriteLine($"Determinant calculated by simple formula is a[0,0] * a[1,1] - a[0,1]*a[1,0] = {rand[0,0] * rand[1,1] - rand[0,1]*rand[1,0]}");
-		qr.QRGSdecomp(rand,tri);
-		double determinant = qr.det(tri);
+		twobytwo.print();
+		WriteLine($"Determinant calculated by simple formula is a[0,0] * a[1,1] - a[0,1]*a[1,0] = {twobytwo[0,0] * twobytwo[1,1] - twobytwo[0,1]*twobytwo[1,0]}");
+		qr.QRGSdecomp(twobytwo,tritwo);
+		double determinant = qr.det(tritwo);
 		WriteLine($"Determinant of this matrix as product of diagonal elements of triangular part is {determinant}");
 		WriteLine("------------------");
 		WriteLine("Part b)");

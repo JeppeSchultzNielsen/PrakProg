@@ -25,3 +25,4 @@ Attempting to find higher excited states. They should be at energies -0.5/n^2: -
 With initial guess for E=-1, found excited state at -0.500001981707238
 With initial guess for E=-0.1, found excited state at -0.124419675552866
 With initial guess for E=-0.05, found excited state at -0.0370303099607522
+Their reduced radial wavefunctions can be seen on wavefunctionsImp

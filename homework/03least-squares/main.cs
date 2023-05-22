@@ -10,6 +10,7 @@ public static class main{
 		WriteLine("-------");
 		WriteLine("Part a)");
 		WriteLine("A linear fitter has been made...");
+		WriteLine("It's tested in part b)");
 		//we're fitting to ln(y)=ln(a)-λt with errors δln(y)=δy/y.
 		var fs = new Func<double,double>[2];
 		fs[0] = x => 1;

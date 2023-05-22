@@ -107,7 +107,7 @@ public static class main{
 		WriteLine("Part c)");
 		WriteLine("Testing error:");
 		var integ = integrator.integrateWErr(f2,0,1);
-		WriteLine($"4/sqrt(1-x^2) integrated from 0 to 1 is {integ.Item1}+-{integ.Item2}, should be {PI}. Done in {integrator.nEvals} steps.");
+		WriteLine($"4/sqrt(1-x^2) integrated from 0 to 1 with absolute and relative accuracy goal 1e-3 is {integ.Item1}+-{integ.Item2}, should be {PI}. Done in {integrator.nEvals} steps.");
 		integ = integrator.integrateWErr(f2,0,1,1e-5,1e-5);
 		WriteLine($"4/sqrt(1-x^2) integrated from 0 to 1 with absolute and relative accuracy goal 1e-5 is {integ.Item1}+-{integ.Item2}, should be {PI}. Done in {integrator.nEvals} steps.");
 		WriteLine("Testing integrals with infinite bounds:");

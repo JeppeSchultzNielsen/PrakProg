@@ -1,6 +1,7 @@
 -------
 Part a)
 A linear fitter has been made...
+It's tested in part b)
 -------
 Part b)
 Making fit to Rutherford and Soddy's data...

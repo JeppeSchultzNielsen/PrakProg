@@ -17,9 +17,9 @@ Done homeworks:
 ---------------------------------------
 | 6  | integration   | 6 | 3 | 1 | 10  |
 ---------------------------------------
-| 7  | mc integration| 6 | 3 | 1 | 10  |
+| 7  | mc integration| 6 | 3 | 1 | 10  | Note: takes some time (~20s on my machine) to make
 ---------------------------------------
-| 8  | roots         | 6 | 3 | 1 | 10  |
+| 8  | roots         | 6 | 3 | 1 | 10  | Note: takes some time (~25s on my machine) to make
 ---------------------------------------
 | 9  | minimization  | 6 | 3 | 1 | 10  |
 ---------------------------------------

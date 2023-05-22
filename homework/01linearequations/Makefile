@@ -21,4 +21,4 @@ txts/times.data : QRGStimetester.exe Makefile
 
 
 clean : 
-	rm -f main.exe out.txt qr.dll QRGStimetester.exe times.data fit.log Plots/*
+	rm -f main.exe out.txt qr.dll QRGStimetester.exe times.data fit.log Plots/* txts/*

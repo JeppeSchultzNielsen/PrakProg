@@ -5,6 +5,8 @@ set xlabel "N"
 set ylabel "t [s]"
 set tics out
 set title "Time for QRGS-decomposition of NxN matrix"
+set fit quiet
+set fit logfile '/dev/null'
 f(x) = a*x**3
 g(x) = b*x**2
 a = 0.000001

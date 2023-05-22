@@ -31,7 +31,7 @@ scipy.integrate.quad seems to have more efficient methods for integrals.
 ------
 Part c)
 Testing error:
-4/sqrt(1-x^2) integrated from 0 to 1 is 3.14183457802727+-0.00251182601633047, should be 3.14159265358979. Done in 13 steps.
+4/sqrt(1-x^2) integrated from 0 to 1 with absolute and relative accuracy goal 1e-3 is 3.14183457802727+-0.00251182601633047, should be 3.14159265358979. Done in 13 steps.
 4/sqrt(1-x^2) integrated from 0 to 1 with absolute and relative accuracy goal 1e-5 is 3.14159283639132+-4.10735417966707E-05, should be 3.14159265358979. Done in 113 steps.
 Testing integrals with infinite bounds:
 e^(-x^2) integrated from -inf to inf with absolute and relative accuracy goal 1.48e-8 is 1.77245383206731+-2.07693859839667E-07, should be sqrt(pi)=1.77245385090552. Done in 3323 steps.
