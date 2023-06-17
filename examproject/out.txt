@@ -38,6 +38,10 @@ Points will be sampled within the box. If they are not within the integration bo
 Testing this with the integral f(x,y)=Exp(x)*Exp(y) with x in (-1,1) and y in (-Sqrt(1-x*x),Sqrt(1-x*x)) (a circle of radius 1) with 10k points
 The result is 3.989797052837+-0.144794493490947, with 15701 calls to f. The boundaries functions have each been evaluated 20k times.
 
-The 2dintegrator has been modified to return number of steps. We can now check whether the Clenshaw-Curtis transformation helps in 2d.
-To do this, we calculate ∫∫ln(x)*ln(y)/sqrt(x*y)dxdy with x and y from 0 to 1.
-This results in 3.99999999250774 after 8728 integration calls (f is called twice in each) and 124 calls to the functions defining the boundaries.
+Now, an implementation must be made which can calculate the error.
+The transformation ∫_a ^b dx ∫_d(x) ^u(x) dy f(x,y) -> ∫_a ^b dx g(x) with g(x) = ∫_d(x) ^u(x) dy f(x,y) is not a full analogy when calculating the error.
+This is due to the fact that g(x) also comes with an error from the 1d-integrator.
+Therefore I extend the calculation of error to include this error using standard error propagation.
+I define the error in the calculation as Abs(q-Q)+Sqrt(q_err^2+Q_err^2) where Q is the higher order rule and q is the lower order rule.
+This should calculate the worst case error. This changes the convergence slightly because the term Sqrt(q_err^2+Q_err^2) was ignored earlier.
+

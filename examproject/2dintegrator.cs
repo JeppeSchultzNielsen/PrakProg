@@ -1,6 +1,7 @@
 using System;
 using static System.Math; 
 using static System.Console;
+using static System.Double;
 
 public static class integrator2d{
     
@@ -47,6 +48,54 @@ public static class integrator2d{
         };
         (double res, double err) = integrator.integrateGeneral(g,a,b,acc,eps);
         return (res, nEvals, nBoundEvals);
+    }
+
+    public static (double,double,int,int) integ2DWErr(
+        Func<double,double,double> f,
+        double a, double b,
+        Func<double,double> d,
+        Func<double,double> u,
+        double acc =1e-5, double eps=1e-5)
+        {
+        int nEvals = 0;
+        int nBoundEvals = 0;
+        Func<double,(double,double)> g = x => {
+            Func<double,double> integHere = y => {
+                return f(x,y);
+            };
+            (double resG, double errG) = integrator.integrateGeneral(integHere,d(x),u(x),acc,eps);
+            nEvals += integrator.nEvals;
+            nBoundEvals++;
+            return (resG,errG);
+        };
+        (double res, double err) = recursiveIntegratorWErr(g,a,b,acc,eps);
+        return (res, err, nEvals, nBoundEvals);
+    }
+
+    private static (double,double) recursiveIntegratorWErr(Func<double,(double,double)> f, double a, double b,
+    double δ=1e-3, double ε=1e-3, double res2=NaN, double res3=NaN, double err2 = NaN, double err3 = NaN)
+    {
+        double h=b-a;
+        if(IsNaN(res2)){
+            (res2, err2) = f(a+2*h/6);
+            (res3, err3) = f(a+4*h/6);
+        } // first call, no points to reuse
+        //issue here is that it cannot deconstruct tuple when function is delegate for some reason. 
+        (double res1, double err1) = f(a+h/6);
+        (double res4, double err4) = f(a+5*h/6);
+        double Q = (2*res1+res2+res3+2*res*f4)/6*(b-a); // higher order rule 
+        double q = (res1+res2+res3+res4)/4*(b-a); // lower order rule
+        double Qerr = 1.0/6.0*(b-a)*Sqrt( Pow(2*err1,2) + Pow(err2,2) + Pow(err3,2) + Pow(2*err4,2) );
+        double qerr = 1.0/4.0*(b-a)*Sqrt( Pow(err1,2) + Pow(err2,2) + Pow(err3,2) + Pow(err4,2) );
+        double diff = Abs(Q-q);
+        double errInDiff = Abs(Sqrt(Qerr*Qerr + qerr*qerr));
+        double err = diff + errInDiff;
+        if (err <= δ+ε*Abs(Q)) return (Q,err);
+        else{
+            var (resLeft, errLeft) = recursiveIntegratorWErr(f,a,(a+b)/2,δ/Sqrt(2),ε,res1,res2,err1,err2);
+            var (resRight, errRight) = recursiveIntegratorWErr(f,(a+b)/2,b,δ/Sqrt(2),ε,res3,res4,err3,err4);
+            return (resLeft+resRight,errLeft + errRight);
+        }
     }
 
     public static (double,double,int) halton2Dint(Func<double,double,double> f,

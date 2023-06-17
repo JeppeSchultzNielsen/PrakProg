@@ -89,13 +89,18 @@ public static class main{
 		WriteLine($"The result is {resHalton}+-{errHalton}, with {fcalls} calls to f. The boundaries functions have each been evaluated 20k times.");
 		WriteLine("");
 
-		WriteLine("The 2dintegrator has been modified to return number of steps. We can now check whether the Clenshaw-Curtis transformation helps in 2d.");
-		WriteLine("To do this, we calculate ∫∫ln(x)*ln(y)/sqrt(x*y)dxdy with x and y from 0 to 1.");
-		f = (x,y) => {return 1/Sqrt(x*y);};
-		u = x => {return 1;};
-		d = x => {return 0;};
-		(res, nEvals, boundEvals) = integrator2d.integ2D(f,0,1,d,u);
-		WriteLine($"This results in {res} after {nEvals} integration calls (f is called twice in each) and {boundEvals} calls to the functions defining the boundaries.");
+		WriteLine("Now, an implementation must be made which can calculate the error.");
+		WriteLine("The transformation ∫_a ^b dx ∫_d(x) ^u(x) dy f(x,y) -> ∫_a ^b dx g(x) with g(x) = ∫_d(x) ^u(x) dy f(x,y) is not a full analogy when calculating the error.");
+		WriteLine("This is due to the fact that g(x) also comes with an error from the 1d-integrator.");
+		WriteLine("Therefore I extend the calculation of error to include this error using standard error propagation.");
+		WriteLine("I define the error in the calculation as Abs(q-Q)+Sqrt(q_err^2+Q_err^2) where Q is the higher order rule and q is the lower order rule.");
+		WriteLine("This should calculate the worst case error. This changes the convergence slightly because the term Sqrt(q_err^2+Q_err^2) was ignored earlier.");
+		WriteLine("");
+
+		(res, double err, nEvals, boundEvals) = integrator2d.integ2DWErr(f,-1,1,d,u);
+		WriteLine($"Integrating f(x,y)=Exp(x)*Exp(y) with x in (-1,1) and y in (-Sqrt(1-x*x),Sqrt(1-x*x)) (a circle of radius 1) gives result {res}+-{err}");
+
+
 
 	}
 }
