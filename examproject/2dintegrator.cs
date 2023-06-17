@@ -77,20 +77,27 @@ public static class integrator2d{
     {
         double h=b-a;
         if(IsNaN(res2)){
-            (res2, err2) = f(a+2*h/6);
-            (res3, err3) = f(a+4*h/6);
+            var f2 = f(a+2*h/6);
+            var f3 = f(a+4*h/6);
+            res2 = f2.Item1;
+            err2 = f2.Item2;
+            res3 = f3.Item1;
+            err3 = f3.Item2;
         } // first call, no points to reuse
-        //issue here is that it cannot deconstruct tuple when function is delegate for some reason. 
-        (double res1, double err1) = f(a+h/6);
-        (double res4, double err4) = f(a+5*h/6);
-        double Q = (2*res1+res2+res3+2*res*f4)/6*(b-a); // higher order rule 
+        var f1 = f(a+h/6);
+        double res1 = f1.Item1;
+        double err1 = f1.Item2; 
+        var f4 = f(a+5*h/6);
+        double res4 = f4.Item1;
+        double err4 = f4.Item2;
+        double Q = (2*res1+res2+res3+2*res4)/6*(b-a); // higher order rule 
         double q = (res1+res2+res3+res4)/4*(b-a); // lower order rule
         double Qerr = 1.0/6.0*(b-a)*Sqrt( Pow(2*err1,2) + Pow(err2,2) + Pow(err3,2) + Pow(2*err4,2) );
         double qerr = 1.0/4.0*(b-a)*Sqrt( Pow(err1,2) + Pow(err2,2) + Pow(err3,2) + Pow(err4,2) );
         double diff = Abs(Q-q);
         double errInDiff = Abs(Sqrt(Qerr*Qerr + qerr*qerr));
         double err = diff + errInDiff;
-        if (err <= δ+ε*Abs(Q)) return (Q,err);
+        if(err <= δ+ε*Abs(Q)) return (Q,err);
         else{
             var (resLeft, errLeft) = recursiveIntegratorWErr(f,a,(a+b)/2,δ/Sqrt(2),ε,res1,res2,err1,err2);
             var (resRight, errRight) = recursiveIntegratorWErr(f,(a+b)/2,b,δ/Sqrt(2),ε,res3,res4,err3,err4);

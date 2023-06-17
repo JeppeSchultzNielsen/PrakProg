@@ -97,8 +97,20 @@ public static class main{
 		WriteLine("This should calculate the worst case error. This changes the convergence slightly because the term Sqrt(q_err^2+Q_err^2) was ignored earlier.");
 		WriteLine("");
 
-		(res, double err, nEvals, boundEvals) = integrator2d.integ2DWErr(f,-1,1,d,u);
+		double err = 0;
+
+		(res, err, nEvals, boundEvals) = integrator2d.integ2DWErr(f,-1,1,d,u);
 		WriteLine($"Integrating f(x,y)=Exp(x)*Exp(y) with x in (-1,1) and y in (-Sqrt(1-x*x),Sqrt(1-x*x)) (a circle of radius 1) gives result {res}+-{err}");
+		WriteLine($"Here we had 2*{nEvals} calls to f, and {boundEvals} calls to each boundary condition.");
+		WriteLine("");
+
+		f = (x,y) => {return Exp(x)*Exp(y);};
+		(res, nEvals, boundEvals) = integrator2d.integ2D(f,-1,1,d,u);
+		WriteLine($"With the old convergence we get result {res} after 2*{nEvals} calls to f, and {boundEvals} calls to each boundary condition.");
+		WriteLine("");
+
+		WriteLine("We are now in a position to compare the precision for a given number of function calls in Monte Carlo 2D integration and adaptive 2D integration.");
+
 
 
 

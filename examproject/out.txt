@@ -45,3 +45,7 @@ Therefore I extend the calculation of error to include this error using standard
 I define the error in the calculation as Abs(q-Q)+Sqrt(q_err^2+Q_err^2) where Q is the higher order rule and q is the lower order rule.
 This should calculate the worst case error. This changes the convergence slightly because the term Sqrt(q_err^2+Q_err^2) was ignored earlier.
 
+Integrating f(x,y)=Exp(x)*Exp(y) with x in (-1,1) and y in (-Sqrt(1-x*x),Sqrt(1-x*x)) (a circle of radius 1) gives result 3.99524093402559+-9.10455949746159E-05
+Here we had 2*47888 calls to f, and 460 calls to each boundary condition.
+
+With the old convergence we get result 3.99523816313921 after 2*48322 calls to f, and 476 calls to each boundary condition.
