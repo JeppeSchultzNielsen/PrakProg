@@ -1,1 +1,38 @@
-Hej
+-----
+Part a)
+Unless otherwise stated, the absolute and relative accuracy goal is 1e-5.
+Testing integrator...
+
+Integrating f(x,y)=1 with x in (-5,5) and y in (-5,5) gives result 99.9999999505249, it should be 100
+
+Integrating f(x,y)=x*y*y with x in (0,2) and y in (0,1) gives result 0.666665757093304, it should be (1/2*2^2)*(1/3*1^3)=2/3
+
+Integrating f(x,y)=x*y*y with x in (-PI,PI) and y in (-PI,PI) gives result 6.65900587168905. According to WolframAlpha, it should be Si(pi^2)=6.659
+
+Since the implementation made in the homework allows infinite limits, we can also test if this works in 2d.
+Integrating f(x,y)=Exp(-x*x-y*y) with x in (-inf,inf) and y in (-inf,inf) gives result 3.14157449025866, it should be pi.
+
+-----
+Part b)
+Testing integrator...
+Integrating f(x,y)=1 with x in (-1,1) and y in (-Sqrt(1-x*x),Sqrt(1-x*x)) (a circle of radius 1) gives result 3.14159264373295
+In polar coordinates this can be restated as a rectangular integral with x->cos(v), y->sin(v), dxdy -> rdrdv, v in (0,2pi) and r in (0,1).
+This then gives 3.14159265901456
+
+Integrating f(x,y)=x*y with x in (-1,1) and y in (-Sqrt(1-x*x),Sqrt(1-x*x)) (a circle of radius 1) gives result 0
+The same integral in polar coordinates is ∫∫r²sin(v)cos(v)rdrdv. This gives -2.56428622898208E-16
+
+Integrating f(x,y)=Exp(x)*Exp(y) with x in (-1,1) and y in (-Sqrt(1-x*x),Sqrt(1-x*x)) (a circle of radius 1) gives result 3.99523816313921
+The same integral in polar coordinates is ∫∫exp( r*(sin(v)cos(v)) )rdrdv. This gives 3.99526277913674
+
+We can also test this with infinite boundaries on x.
+Integrating f(x,y)=Exp(-x*x-y*y) with x in (-inf,inf) and y in (-Exp(-x*x),Exp(x*x)) gives result 2.03519769912845, according to WolframAlpha it is 2.03519
+
+-----
+Part c)
+The Halton-sequence integrator of homework 7 has been extended to take arguments similar to the adaptive 2d integrator.
+The code is heavily inspired by that of homework 7.
+The size of the sampling box is given by the user.
+Points will be sampled within the box. If they are not within the integration boundary, they are discarded.
+Testing this with the integral f(x,y)=Exp(x)*Exp(y) with x in (-1,1) and y in (-Sqrt(1-x*x),Sqrt(1-x*x)) (a circle of radius 1) with 10k points
+The result is 0.794022067017576+-0.227691296294933, with 15701 calls to f. The boundaries functions have each been evaluated 20k times.

@@ -65,7 +65,7 @@ public static class integrator{
             return integrateCCWErr(newFunc,0,1,δ,ε);
         }
         //just a normal integral
-        return integrateWErr(f,a,b,δ,ε);
+        return integrateCCWErr(f,a,b,δ,ε);
     }
 
     public static double integrateCC(Func<double,double> f, double a, double b,

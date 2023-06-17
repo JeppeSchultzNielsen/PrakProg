@@ -37,6 +37,8 @@ public static class mcint{
         return result;
     }
 
+    
+
 
     public static (double,double) haltonint(Func<vector,double> f,vector a,vector b,int N){
         int dim=a.size; double V=1; 
