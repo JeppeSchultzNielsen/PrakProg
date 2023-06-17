@@ -33,6 +33,11 @@ Part c)
 The Halton-sequence integrator of homework 7 has been extended to take arguments similar to the adaptive 2d integrator.
 The code is heavily inspired by that of homework 7.
 The size of the sampling box is given by the user.
+
 Points will be sampled within the box. If they are not within the integration boundary, they are discarded.
 Testing this with the integral f(x,y)=Exp(x)*Exp(y) with x in (-1,1) and y in (-Sqrt(1-x*x),Sqrt(1-x*x)) (a circle of radius 1) with 10k points
-The result is 0.794022067017576+-0.227691296294933, with 15701 calls to f. The boundaries functions have each been evaluated 20k times.
+The result is 3.989797052837+-0.144794493490947, with 15701 calls to f. The boundaries functions have each been evaluated 20k times.
+
+The 2dintegrator has been modified to return number of steps. We can now check whether the Clenshaw-Curtis transformation helps in 2d.
+To do this, we calculate ∫∫ln(x)*ln(y)/sqrt(x*y)dxdy with x and y from 0 to 1.
+This results in 3.99999999250774 after 8728 integration calls (f is called twice in each) and 124 calls to the functions defining the boundaries.
