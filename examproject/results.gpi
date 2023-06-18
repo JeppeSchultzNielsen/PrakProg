@@ -1,0 +1,11 @@
+set terminal svg
+set output "plots/Results.svg"
+set key top right
+set xlabel "Calls to integrand function"
+set ylabel "Result"
+set tics out
+set yrange [-109:-108]
+set logscale x
+set title "Integration of (2x^2+6*x^4-7)(9y+7y^3+6) over a circle of radius 1"
+plot "txts/adaptiveIntegrator.txt" using 3:1:2 with yerrorbars title "Adaptive integrator"\
+,"txts/monteCarloIntegrator.txt" using 3:1:2 with yerrorbars title "MC integrator"\

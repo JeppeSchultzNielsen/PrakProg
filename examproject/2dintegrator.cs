@@ -136,7 +136,7 @@ public static class integrator2d{
                 sum+=f(x[0],x[1]); 
                 fcalls1++;
             }
-            if(x2[1] > d(x[0]) &&  x2[1] < u(x[0])){
+            if(x2[1] > d(x2[0]) &&  x2[1] < u(x2[0])){
                 sum2+=f(x2[0],x2[1]); 
                 fcalls2++;
                 

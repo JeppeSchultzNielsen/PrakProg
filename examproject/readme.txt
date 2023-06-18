@@ -13,9 +13,15 @@ static double integ2D(
 	Func<double,double> u,
 	double acc, double eps)
 
-I have chosen to use my one-dimensional integrator from the homeworks to do this. 
+________
+
+The general idea is to transform the 2-dimensional problem into two 1-dimensional problems:
+∫_a ^b dx ∫_d(x) ^u(x) dy f(x,y) -> ∫_a ^b dx g(x) with g(x) = ∫_d(x) ^u(x) dy f(x,y)
+Then the adaptive integrator from the homework can be used. 
 Here adaptive integration is done by comparing results obtained by the trapezium and rectangle rules.
 I have made the following exercises for myself:
+
+_________
 
 Part A (6 points):
 Implement a two-dimensional integrator for integrals on rectangular areas in the xy-plane in the form
@@ -32,11 +38,7 @@ Extend the two-dimensional integrator to also return the error and the number of
 Extend the N-dimensional Monte-Carlo integrator from the homework to be able to calculate integrals of the same form. 
 Compare the error as a function of function calls for the two integrators.
 
+________
 
-______________
-
-
-
-The general idea is to transform the problem into two 1-dimensional problems:
-∫_a ^b dx ∫_d(x) ^u(x) dy f(x,y) -> ∫_a ^b dx g(x) with g(x) = ∫_d(x) ^u(x) dy f(x,y)
-Then the integrator from the homework can be used. 
+I have completed all the tasks. The results can be seen in "out.txt" and the "plots" directory. 
+The command "make" takes approximately 11s on my machine. 

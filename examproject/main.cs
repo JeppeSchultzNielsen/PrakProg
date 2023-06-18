@@ -10,7 +10,7 @@ public static class main{
 		WriteLine("-----");
 		WriteLine("Part a)");
 		WriteLine("Unless otherwise stated, the absolute and relative accuracy goal is 1e-5.");
-		WriteLine("Testing integrator...");
+		WriteLine("Testing integrator on rectangular areas...");
 		WriteLine("");
 
 		Func<double, double, double> f = (x,y) => {return 1;};
@@ -36,7 +36,7 @@ public static class main{
 
 		WriteLine("-----");
 		WriteLine("Part b)");
-		WriteLine("Testing integrator...");
+		WriteLine("Testing integrator on arbitrary areas...");
 		Func<double, double> u = x => {return Sqrt(1-x*x);};
 		Func<double, double> d = x => {return -Sqrt(1-x*x);};
 		f = (x,y) => {return 1;};
@@ -76,17 +76,17 @@ public static class main{
 		WriteLine("Part c)");
 		WriteLine("The Halton-sequence integrator of homework 7 has been extended to take arguments similar to the adaptive 2d integrator.");
 		WriteLine("The code is heavily inspired by that of homework 7.");
+		WriteLine("Points will be sampled within the box. If they are not within the integration boundary, they are discarded.");
 		WriteLine("The size of the sampling box is given by the user.");
 		WriteLine("");
 
-		WriteLine("Points will be sampled within the box. If they are not within the integration boundary, they are discarded.");
 		WriteLine("Testing this with the integral f(x,y)=Exp(x)*Exp(y) with x in (-1,1) and y in (-Sqrt(1-x*x),Sqrt(1-x*x)) (a circle of radius 1) with 10k points");
 
 		f = (x,y) => {return Exp(x)*Exp(y);};
 		u = x => {return Sqrt(1-x*x);};
 		d = x => {return -Sqrt(1-x*x);};
 		(double resHalton, double errHalton, int fcalls) = integrator2d.halton2Dint(f,-1,1,-1,1,d,u,10000);
-		WriteLine($"The result is {resHalton}+-{errHalton}, with {fcalls} calls to f. The boundaries functions have each been evaluated 20k times.");
+		WriteLine($"The result is {resHalton}+-{errHalton}, with {fcalls} calls to f. The boundary functions have each been evaluated 20k times (once for each Halton-series -- two are used when estimating the error).");
 		WriteLine("");
 
 		WriteLine("Now, an implementation must be made which can calculate the error.");
@@ -110,8 +110,38 @@ public static class main{
 		WriteLine("");
 
 		WriteLine("We are now in a position to compare the precision for a given number of function calls in Monte Carlo 2D integration and adaptive 2D integration.");
+		WriteLine("To examine this, I integrate an arbitrary polynomium (2x^2+6*x^4-7)(9y+7y^3+6) over a circle of radius 1.");
+		u = x => {return Sqrt(1-x*x);};
+		d = x => {return -Sqrt(1-x*x);};
+		f = (x,y) => {return (2*Pow(x,2)+6*Pow(x,4)-7)*(9*y+7*Pow(y,3)+6);};
+		(resHalton, errHalton, fcalls) = integrator2d.halton2Dint(f,-1,1,-1,1,d,u,10000);
+		(res, err, nEvals, boundEvals) = integrator2d.integ2DWErr(f,-1,1,d,u);
+		WriteLine($"The adaptive integrator gives {res}+-{err} for this, and the quasi random Monte Carlo integrator gives {resHalton}+-{errHalton}. They agree within the error.");
+		WriteLine("Calculating the integral with different precisions in adaptive integrator...");
 
+		string toWrite = "";
+		for(int i = 0; i < 4; i++){
+			for(int j = 0; j < 5; j++){
+				double precision = (2*j+1)*Pow(10,i)*1e-6;
+				(res, err, nEvals, boundEvals) = integrator2d.integ2DWErr(f,-1,1,d,u,precision,precision);
+				toWrite += $"{res}\t{err}\t{2*nEvals}\t{boundEvals}\t{precision}\n";
+			}
+		}
+		File.WriteAllText("txts/adaptiveIntegrator.txt",toWrite);
 
+		WriteLine("Calculating the integral with different number of samples in MC integrator...");
+
+		toWrite = "";
+		for(int i = 0; i < 4; i++){
+			for(int j = 0; j < 5; j++){
+				int N = (2*j+1)*200*(int)Pow(10,i);
+				(resHalton, errHalton, fcalls) = integrator2d.halton2Dint(f,-1,1,-1,1,d,u,N);
+				toWrite += $"{resHalton}\t{errHalton}\t{fcalls}\t{2*N}\t{N}\n";
+			}
+		}
+		File.WriteAllText("txts/monteCarloIntegrator.txt",toWrite);
+
+		WriteLine("Plots have been made comparing the convergence of the two methods in the plots directory.");
 
 
 	}

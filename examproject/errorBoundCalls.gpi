@@ -1,0 +1,10 @@
+set terminal svg
+set output "plots/errorBoundCalls.svg"
+set key top right
+set xlabel "Calls to boundary functions"
+set ylabel "Estimated error"
+set tics out
+set title "Integration of (2x^2+6*x^4-7)(9y+7y^3+6) over a circle of radius 1"
+set logscale yx
+plot "txts/adaptiveIntegrator.txt" using 4:2 with points title "Adaptive integrator"\
+,"txts/monteCarloIntegrator.txt" using 4:2 with points title "MC integrator"\
