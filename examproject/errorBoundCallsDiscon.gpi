@@ -1,0 +1,10 @@
+set terminal svg
+set output "plots/errorBoundCallsDiscontinous.svg"
+set key top right
+set xlabel "Calls to boundary functions"
+set ylabel "Estimated error"
+set tics out
+set title "Integration over a circle of radius 1 where the value is 1 if x*y > 1"
+set logscale yx
+plot "txts/adaptiveIntegratorDiscontinous.txt" using 4:2 with points title "Adaptive integrator"\
+,"txts/monteCarloIntegratorDiscontinous.txt" using 4:2 with points title "MC integrator"\

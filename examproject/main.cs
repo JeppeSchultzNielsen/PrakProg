@@ -142,7 +142,34 @@ public static class main{
 		File.WriteAllText("txts/monteCarloIntegrator.txt",toWrite);
 
 		WriteLine("Plots have been made comparing the convergence of the two methods in the plots directory.");
+		WriteLine("Generally the adaptive integrator seems to fare much better than the Monte Carlo integrator.");
+		WriteLine("We can compare again using a discontinuous function which is 1 if x*y > 0 and 0 if x*y =< 0 on the same interval. ");
+		WriteLine("Calculating the integral with different precisions in adaptive integrator...");
+		f = (x,y) => {
+			if(x*y > 0) return 1;
+			else return 0;
+		};
+		
+		toWrite = "";
+		for(int i = 0; i < 4; i++){
+			for(int j = 0; j < 5; j++){
+				double precision = (2*j+1)*Pow(10,i)*1e-6;
+				(res, err, nEvals, boundEvals) = integrator2d.integ2DWErr(f,-1,1,d,u,precision,precision);
+				toWrite += $"{res}\t{err}\t{2*nEvals}\t{boundEvals}\t{precision}\n";
+			}
+		}
+		File.WriteAllText("txts/adaptiveIntegratorDiscontinous.txt",toWrite);
 
+		WriteLine("Calculating the integral with different number of samples in MC integrator...");
 
+		toWrite = "";
+		for(int i = 0; i < 4; i++){
+			for(int j = 0; j < 5; j++){
+				int N = (2*j+1)*200*(int)Pow(10,i);
+				(resHalton, errHalton, fcalls) = integrator2d.halton2Dint(f,-1,1,-1,1,d,u,N);
+				toWrite += $"{resHalton}\t{errHalton}\t{fcalls}\t{2*N}\t{N}\n";
+			}
+		}
+		File.WriteAllText("txts/monteCarloIntegratorDiscontinous.txt",toWrite);
 	}
 }

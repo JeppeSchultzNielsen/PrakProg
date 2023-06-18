@@ -1,0 +1,11 @@
+set terminal svg
+set output "plots/ResultsDiscontinous.svg"
+set key top right
+set xlabel "Calls to integrand function"
+set ylabel "Result"
+set tics out
+set yrange [1.5:1.6]
+set logscale x
+set title "Integration over a circle of radius 1 where the value is 1 if x*y > 1"
+plot "txts/adaptiveIntegratorDiscontinous.txt" using 3:1:2 with yerrorbars title "Adaptive integrator"\
+,"txts/monteCarloIntegratorDiscontinous.txt" using 3:1:2 with yerrorbars title "MC integrator"\

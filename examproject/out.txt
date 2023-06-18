@@ -1,7 +1,7 @@
 -----
 Part a)
 Unless otherwise stated, the absolute and relative accuracy goal is 1e-5.
-Testing integrator...
+Testing integrator on rectangular areas...
 
 Integrating f(x,y)=1 with x in (-5,5) and y in (-5,5) gives result 99.9999999505249, it should be 100
 
@@ -14,7 +14,7 @@ Integrating f(x,y)=Exp(-x*x-y*y) with x in (-inf,inf) and y in (-inf,inf) gives 
 
 -----
 Part b)
-Testing integrator...
+Testing integrator on arbitrary areas...
 Integrating f(x,y)=1 with x in (-1,1) and y in (-Sqrt(1-x*x),Sqrt(1-x*x)) (a circle of radius 1) gives result 3.14159264373295
 In polar coordinates this can be restated as a rectangular integral with x->cos(v), y->sin(v), dxdy -> rdrdv, v in (0,2pi) and r in (0,1).
 This then gives 3.14159265901456
@@ -32,9 +32,9 @@ Integrating f(x,y)=Exp(-x*x-y*y) with x in (-inf,inf) and y in (-Exp(-x*x),Exp(x
 Part c)
 The Halton-sequence integrator of homework 7 has been extended to take arguments similar to the adaptive 2d integrator.
 The code is heavily inspired by that of homework 7.
+Points will be sampled within the box. If they are not within the integration boundary, they are discarded.
 The size of the sampling box is given by the user.
 
-Points will be sampled within the box. If they are not within the integration boundary, they are discarded.
 Testing this with the integral f(x,y)=Exp(x)*Exp(y) with x in (-1,1) and y in (-Sqrt(1-x*x),Sqrt(1-x*x)) (a circle of radius 1) with 10k points
 The result is 3.989797052837+-0.0137024905648326, with 15732 calls to f. The boundary functions have each been evaluated 20k times (once for each Halton-series -- two are used when estimating the error).
 
@@ -56,3 +56,7 @@ The adaptive integrator gives -108.384343328873+-0.0009019220620568 for this, an
 Calculating the integral with different precisions in adaptive integrator...
 Calculating the integral with different number of samples in MC integrator...
 Plots have been made comparing the convergence of the two methods in the plots directory.
+Generally the adaptive integrator seems to fare much better than the Monte Carlo integrator.
+We can compare again using a discontinuous function which is 1 if x*y > 0 and 0 if x*y =< 0 on the same interval. 
+Calculating the integral with different precisions in adaptive integrator...
+Calculating the integral with different number of samples in MC integrator...

@@ -19,6 +19,7 @@ The general idea is to transform the 2-dimensional problem into two 1-dimensiona
 ∫_a ^b dx ∫_d(x) ^u(x) dy f(x,y) -> ∫_a ^b dx g(x) with g(x) = ∫_d(x) ^u(x) dy f(x,y)
 Then the adaptive integrator from the homework can be used. 
 Here adaptive integration is done by comparing results obtained by the trapezium and rectangle rules.
+In my implementation it always does a Clenshaw-Curtis transformation and automatically does a relevant transformation if an infinite limit is detected.
 I have made the following exercises for myself:
 
 _________
@@ -41,4 +42,4 @@ Compare the error as a function of function calls for the two integrators.
 ________
 
 I have completed all the tasks. The results can be seen in "out.txt" and the "plots" directory. 
-The command "make" takes approximately 11s on my machine. 
+The command "make" takes approximately 15s on my machine. 
