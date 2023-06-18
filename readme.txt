@@ -27,6 +27,8 @@ Done homeworks:
  ======================================
 |                    total points: 99  |
  ======================================
+ | -  | examination  | 6 | 3 | 1 | 10  | 
+---------------------------------------
 
 The results/tests of the homework will be found in out.txt in each homework directory.
 Any plots will be in the Plots directory of that homework. 
